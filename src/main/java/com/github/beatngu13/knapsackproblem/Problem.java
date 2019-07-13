@@ -8,7 +8,6 @@ import java.util.stream.IntStream;
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 
-import io.jenetics.BitChromosome;
 import lombok.experimental.UtilityClass;
 
 // Knapsack problem based on P07 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html.
@@ -31,13 +30,13 @@ public class Problem {
 			.mapToObj(i -> new Item(profits.get(i), weights.get(i))) //
 			.collect(Collectors.toList());
 
-	private static final BitChromosome optimalSolution = BitChromosome.of("101010111000011");
+	private static final String optimalSolution = "101010111000011";
 
 	public static final Knapsack OPTIMAL_KNAPSACK = getOptimalKnapsack();
 
 	private static Knapsack getOptimalKnapsack() {
 		return IntStream.range(0, optimalSolution.length()) //
-				.mapToObj(i -> optimalSolution.getGene(i).getBit() ? ITEMS.get(i) : null) //
+				.mapToObj(i -> optimalSolution.charAt(i) == '1' ? ITEMS.get(i) : null) //
 				.filter(Objects::nonNull) //
 				.collect(Collectors.collectingAndThen(Collectors.toList(), Knapsack::new));
 	}
