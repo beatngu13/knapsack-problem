@@ -12,8 +12,8 @@ public class WeightConstraint implements Constraint<AnyGene<Knapsack>, Integer> 
 
 	@Override
 	public boolean test(final Phenotype<AnyGene<Knapsack>, Integer> individual) {
-		final Knapsack knapsack = individual.getGenotype().getGene().getAllele();
-		final int weight = knapsack.getItems().stream() //
+		final var knapsack = individual.getGenotype().getGene().getAllele();
+		final var weight = knapsack.getItems().stream() //
 				.mapToInt(Item::getWeight) //
 				.sum();
 		return weight <= Problem.MAX_CAPACITY;

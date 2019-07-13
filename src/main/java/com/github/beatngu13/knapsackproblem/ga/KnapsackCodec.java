@@ -1,12 +1,9 @@
 package com.github.beatngu13.knapsackproblem.ga;
 
-import java.util.List;
-import java.util.Random;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import com.github.beatngu13.knapsackproblem.Problem;
-import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 
 import io.jenetics.AnyChromosome;
@@ -24,11 +21,11 @@ public class KnapsackCodec implements Codec<Knapsack, AnyGene<Knapsack>> {
 	}
 
 	private static Knapsack create() {
-		final Random rand = RandomRegistry.getRandom();
-		final List<Item> items = Problem.ITEMS.stream() //
-				.filter(item -> rand.nextBoolean()) //
+		final var random = RandomRegistry.getRandom();
+		final var items = Problem.ITEMS.stream() //
+				.filter(item -> random.nextBoolean()) //
 				.collect(Collectors.toList());
-		final Knapsack knapsack = new Knapsack(items);
+		final var knapsack = new Knapsack(items);
 		// Make sure only valid solutions are created.
 		return knapsack.getWeight() <= Problem.MAX_CAPACITY ? knapsack : create();
 	}
