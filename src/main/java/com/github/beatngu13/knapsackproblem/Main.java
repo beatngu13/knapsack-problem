@@ -1,5 +1,6 @@
 package com.github.beatngu13.knapsackproblem;
 
+import com.github.beatngu13.knapsackproblem.ga.KnapsackChromosome;
 import com.github.beatngu13.knapsackproblem.ga.KnapsackCodec;
 import com.github.beatngu13.knapsackproblem.ga.ProfitFitness;
 import com.github.beatngu13.knapsackproblem.ga.WeightConstraint;
@@ -16,7 +17,7 @@ public class Main {
 		final var bestPhenotype = knapsackEngine.stream() //
 				.limit(100L) //
 				.collect(EvolutionResult.toBestPhenotype());
-		final var bestKnapsack = bestPhenotype.getGenotype().getGene().getAllele();
+		final var bestKnapsack = ((KnapsackChromosome) bestPhenotype.getGenotype().getChromosome()).getKnapsack();
 		System.out.println("Solution: " + bestKnapsack);
 		System.out.println("Optimum:  " + Problem.OPTIMAL_KNAPSACK);
 	}
