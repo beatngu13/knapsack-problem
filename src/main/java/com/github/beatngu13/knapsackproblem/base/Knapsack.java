@@ -1,4 +1,4 @@
-package com.github.beatngu13.knapsackproblem;
+package com.github.beatngu13.knapsackproblem.base;
 
 import java.util.List;
 

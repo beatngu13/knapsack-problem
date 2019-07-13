@@ -1,5 +1,9 @@
 package com.github.beatngu13.knapsackproblem;
 
+import com.github.beatngu13.knapsackproblem.ga.KnapsackCodec;
+import com.github.beatngu13.knapsackproblem.ga.ProfitFitness;
+import com.github.beatngu13.knapsackproblem.ga.WeightConstraint;
+
 import io.jenetics.engine.Engine;
 import io.jenetics.engine.EvolutionResult;
 

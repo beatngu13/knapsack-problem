@@ -1,9 +1,13 @@
-package com.github.beatngu13.knapsackproblem;
+package com.github.beatngu13.knapsackproblem.ga;
 
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import com.github.beatngu13.knapsackproblem.Problem;
+import com.github.beatngu13.knapsackproblem.base.Item;
+import com.github.beatngu13.knapsackproblem.base.Knapsack;
 
 import io.jenetics.AnyChromosome;
 import io.jenetics.AnyGene;

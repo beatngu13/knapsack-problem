@@ -1,4 +1,8 @@
-package com.github.beatngu13.knapsackproblem;
+package com.github.beatngu13.knapsackproblem.ga;
+
+import com.github.beatngu13.knapsackproblem.Problem;
+import com.github.beatngu13.knapsackproblem.base.Item;
+import com.github.beatngu13.knapsackproblem.base.Knapsack;
 
 import io.jenetics.AnyGene;
 import io.jenetics.Phenotype;

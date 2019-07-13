@@ -5,6 +5,9 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import com.github.beatngu13.knapsackproblem.base.Item;
+import com.github.beatngu13.knapsackproblem.base.Knapsack;
+
 import io.jenetics.BitChromosome;
 import lombok.experimental.UtilityClass;
 
