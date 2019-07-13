@@ -10,7 +10,7 @@ The chosen knapsack problem is by [John Burkardt](https://people.sc.fsu.edu/~jbu
 
 ## TODOs
 
-- [ ] Use `Gene` interface instead of `AnyGene`
+- [x] Use `Gene` interface instead of `AnyGene`
 - [ ] Add custom `Alterer`s.
 - [ ] Switch to a multi-objective problem
 - [ ] Improve documentation (e.g. Javadoc)
