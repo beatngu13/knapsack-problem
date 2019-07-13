@@ -5,7 +5,7 @@ import lombok.Value;
 @Value
 public class Item {
 
-	int profit;
-	int weight;
+	private int profit;
+	private int weight;
 
 }

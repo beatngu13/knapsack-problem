@@ -7,7 +7,7 @@ import lombok.Value;
 @Value
 public class Knapsack {
 
-	List<Item> items;
+	private List<Item> items;
 
 	public int getProfit() {
 		return items.stream() //
