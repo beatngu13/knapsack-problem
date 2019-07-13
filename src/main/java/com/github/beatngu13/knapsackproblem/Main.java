@@ -18,6 +18,7 @@ public class Main {
 				.limit(100L) //
 				.collect(EvolutionResult.toBestPhenotype());
 		final var bestKnapsack = ((KnapsackChromosome) bestPhenotype.getGenotype().getChromosome()).getKnapsack();
+		// XXX Profit is sometimes higher than optimum?
 		System.out.println("Solution: " + bestKnapsack);
 		System.out.println("Optimum:  " + Problem.OPTIMAL_KNAPSACK);
 	}
