@@ -11,7 +11,7 @@ import lombok.Value;
 @Value
 public class Knapsack {
 
-	private List<Item> items;
+	private final List<Item> items;
 
 	public static Knapsack newInstance() {
 		final var random = RandomRegistry.getRandom();
