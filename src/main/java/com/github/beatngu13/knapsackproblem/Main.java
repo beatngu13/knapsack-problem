@@ -16,8 +16,8 @@ public class Main {
 				.build();
 		final var bestPhenotype = knapsackEngine.stream() //
 				.limit(100L) //
-				.collect(EvolutionResult.toBestPhenotype());
-		final var bestKnapsack = ((KnapsackChromosome) bestPhenotype.getGenotype().getChromosome()).getKnapsack();
+				.collect(EvolutionResult.toBestGenotype());
+		final var bestKnapsack = ((KnapsackChromosome) bestPhenotype.getChromosome()).getKnapsack();
 		System.out.println("Solution: " + bestKnapsack);
 		System.out.println("Optimum:  " + Problem.OPTIMAL_KNAPSACK);
 	}
