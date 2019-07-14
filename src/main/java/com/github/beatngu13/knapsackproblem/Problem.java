@@ -38,7 +38,7 @@ public class Problem {
 		return IntStream.range(0, optimalSolution.length()) //
 				.mapToObj(i -> optimalSolution.charAt(i) == '1' ? ITEMS.get(i) : null) //
 				.filter(Objects::nonNull) //
-				.collect(Collectors.collectingAndThen(Collectors.toList(), Knapsack::new));
+				.collect(Collectors.collectingAndThen(Collectors.toSet(), Knapsack::new));
 	}
 
 }

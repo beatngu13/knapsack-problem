@@ -18,7 +18,6 @@ public class Main {
 				.limit(100L) //
 				.collect(EvolutionResult.toBestPhenotype());
 		final var bestKnapsack = ((KnapsackChromosome) bestPhenotype.getGenotype().getChromosome()).getKnapsack();
-		// FIXME Profit may be higher than optimum due to duplicate items.
 		System.out.println("Solution: " + bestKnapsack);
 		System.out.println("Optimum:  " + Problem.OPTIMAL_KNAPSACK);
 	}

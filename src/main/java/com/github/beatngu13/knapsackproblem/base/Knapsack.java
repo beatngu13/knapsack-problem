@@ -1,6 +1,6 @@
 package com.github.beatngu13.knapsackproblem.base;
 
-import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.github.beatngu13.knapsackproblem.Problem;
@@ -11,13 +11,13 @@ import lombok.Value;
 @Value
 public class Knapsack {
 
-	private final List<Item> items;
+	private final Set<Item> items;
 
 	public static Knapsack newInstance() {
 		final var random = RandomRegistry.getRandom();
 		final var items = Problem.ITEMS.stream() //
 				.filter(item -> random.nextBoolean()) //
-				.collect(Collectors.toList());
+				.collect(Collectors.toSet());
 		final var knapsack = new Knapsack(items);
 		// Make sure only valid knapsacks are created.
 		return knapsack.getWeight() <= Problem.MAX_CAPACITY ? knapsack : newInstance();
