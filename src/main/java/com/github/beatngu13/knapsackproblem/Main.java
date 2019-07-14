@@ -3,7 +3,7 @@ package com.github.beatngu13.knapsackproblem;
 import com.github.beatngu13.knapsackproblem.ga.KnapsackChromosome;
 import com.github.beatngu13.knapsackproblem.ga.KnapsackCodec;
 import com.github.beatngu13.knapsackproblem.ga.ProfitFitness;
-import com.github.beatngu13.knapsackproblem.ga.UnusuedItemsMutator;
+import com.github.beatngu13.knapsackproblem.ga.UnusedItemsMutator;
 import com.github.beatngu13.knapsackproblem.ga.WeightConstraint;
 
 import io.jenetics.Mutator;
@@ -16,7 +16,7 @@ public class Main {
 
 	public static void main(final String[] args) {
 		final var knapsackEngine = Engine.builder(new ProfitFitness(), new KnapsackCodec()) //
-				.alterers(new SinglePointCrossover<>(0.2), new Mutator<>(0.15), new UnusuedItemsMutator(0.3)) //
+				.alterers(new SinglePointCrossover<>(0.2), new Mutator<>(0.15), new UnusedItemsMutator(0.3)) //
 				.constraint(new WeightConstraint()) //
 				.build();
 		final EvolutionStatistics<Integer, ?> stats = EvolutionStatistics.ofNumber();

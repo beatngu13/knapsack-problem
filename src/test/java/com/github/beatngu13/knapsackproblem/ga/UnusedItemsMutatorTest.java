@@ -22,7 +22,7 @@ class UnusedItemsMutatorTest {
 	@Test
 	void should_not_mutate_when_probability_is_zero() throws Exception {
 		final var knapsack = new Knapsack(Collections.emptySet());
-		final var cut = new UnusuedItemsMutator(0.0);
+		final var cut = new UnusedItemsMutator(0.0);
 
 		final var result = cut.alter(toPhenotypeSeq(knapsack), 1L);
 
@@ -33,7 +33,7 @@ class UnusedItemsMutatorTest {
 
 	@Test
 	void should_not_mutate_knapsack_without_available_weight() throws Exception {
-		final var cut = new UnusuedItemsMutator(1.0);
+		final var cut = new UnusedItemsMutator(1.0);
 
 		final var result = cut.alter(toPhenotypeSeq(Problem.OPTIMAL_KNAPSACK), 1L);
 
@@ -45,7 +45,7 @@ class UnusedItemsMutatorTest {
 	@Test
 	void should_mutate_knapsack_with_available_weight() throws Exception {
 		final var knapsack = new Knapsack(Collections.emptySet());
-		final var cut = new UnusuedItemsMutator(1.0);
+		final var cut = new UnusedItemsMutator(1.0);
 
 		final var result = cut.alter(toPhenotypeSeq(knapsack), 1L);
 

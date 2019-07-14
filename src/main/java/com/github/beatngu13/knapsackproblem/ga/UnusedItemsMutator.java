@@ -19,7 +19,7 @@ import io.jenetics.util.Seq;
 /**
  * Mutates a knapsack by adding unused items.
  */
-public class UnusuedItemsMutator implements Alterer<ItemGene, Integer> {
+public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 
 	/**
 	 * The altering probability.
@@ -29,7 +29,7 @@ public class UnusuedItemsMutator implements Alterer<ItemGene, Integer> {
 	/**
 	 * @param The altering probability.
 	 */
-	public UnusuedItemsMutator(final double probability) {
+	public UnusedItemsMutator(final double probability) {
 		this.probability = probability;
 	}
 
