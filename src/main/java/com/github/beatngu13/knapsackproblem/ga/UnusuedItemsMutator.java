@@ -36,12 +36,11 @@ public class UnusuedItemsMutator implements Alterer<ItemGene, Integer> {
 	@Override
 	public AltererResult<ItemGene, Integer> alter(final Seq<Phenotype<ItemGene, Integer>> population,
 			final long generation) {
+		final var random = RandomRegistry.getRandom();
 		return population.stream() //
-				.filter(individual -> {
-					final var random = RandomRegistry.getRandom();
-					return random.nextInt(100) <= probability * 100;
-				}) //
-				.map(individual -> addUnusedItems(individual, generation)) //
+				.map(individual -> random.nextInt(100) <= probability * 100 //
+						? addUnusedItems(individual, generation) //
+						: individual) //
 				.collect(Collectors.collectingAndThen(ISeq.toISeq(), AltererResult::of));
 	}
 
