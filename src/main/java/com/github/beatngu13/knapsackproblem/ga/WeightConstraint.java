@@ -8,13 +8,13 @@ import io.jenetics.engine.Constraint;
 public class WeightConstraint implements Constraint<ItemGene, Integer> {
 
 	@Override
-	public boolean test(Phenotype<ItemGene, Integer> individual) {
+	public boolean test(final Phenotype<ItemGene, Integer> individual) {
 		final var knapsack = ((KnapsackChromosome) individual.getGenotype().getChromosome()).getKnapsack();
 		return knapsack.getWeight() <= Problem.MAX_CAPACITY;
 	}
 
 	@Override
-	public Phenotype<ItemGene, Integer> repair(Phenotype<ItemGene, Integer> individual, long generation) {
+	public Phenotype<ItemGene, Integer> repair(final Phenotype<ItemGene, Integer> individual, final long generation) {
 		// No repair like Constraint#of(Predicate).
 		return Phenotype.of(individual.getGenotype().newInstance(), generation);
 	}

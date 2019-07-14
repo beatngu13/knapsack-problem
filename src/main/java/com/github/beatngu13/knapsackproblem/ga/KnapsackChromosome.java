@@ -32,7 +32,7 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 	}
 
 	@Override
-	public Chromosome<ItemGene> newInstance(ISeq<ItemGene> genes) {
+	public Chromosome<ItemGene> newInstance(final ISeq<ItemGene> genes) {
 		final val items = genes.stream() //
 				.map(ItemGene::getAllele) //
 				.collect(Collectors.toSet());
@@ -40,7 +40,7 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 	}
 
 	@Override
-	public ItemGene getGene(int index) {
+	public ItemGene getGene(final int index) {
 		return toSeq().get(index);
 	}
 

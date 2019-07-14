@@ -31,7 +31,7 @@ public class ItemGene implements Gene<Item, ItemGene> {
 	}
 
 	@Override
-	public ItemGene newInstance(Item item) {
+	public ItemGene newInstance(final Item item) {
 		return new ItemGene(item);
 	}
 
