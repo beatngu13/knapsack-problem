@@ -59,9 +59,10 @@ public class UnusuedItemsMutator implements Alterer<ItemGene, Integer> {
 				.filter(item -> !knapsack.getItems().contains(item)) // Filter for unused items.
 				.sorted(Comparator.comparing(Item::getProfit).reversed()) // Sort by highest profit.
 				.forEach(unusedItem -> {
-					final var availableWeight = Problem.MAX_CAPACITY - new Knapsack(newItems).getWeight();
-					final var itemWeight = unusedItem.getWeight();
-					if (availableWeight - itemWeight >= 0) {
+					final var newKnapsackWeight = new Knapsack(newItems).getWeight();
+					final var availableWeight = Problem.MAX_CAPACITY - newKnapsackWeight;
+					final var unusedItemWeight = unusedItem.getWeight();
+					if (availableWeight - unusedItemWeight >= 0) {
 						newItems.add(unusedItem);
 					}
 				});
