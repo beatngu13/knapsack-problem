@@ -11,6 +11,7 @@ The chosen knapsack problem is by [John Burkardt](https://people.sc.fsu.edu/~jbu
 ## TODOs
 
 - [x] Use `Gene` interface instead of `AnyGene`
-- [ ] Add custom `Alterer`s.
+- [x] Add custom `Alterer`
+- [ ] Create unit tests
 - [ ] Switch to a multi-objective problem
 - [ ] Improve documentation (e.g. Javadoc)
