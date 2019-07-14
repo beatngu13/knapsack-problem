@@ -8,11 +8,20 @@ import com.github.beatngu13.knapsackproblem.Problem;
 import io.jenetics.util.RandomRegistry;
 import lombok.Value;
 
+/**
+ * A knapsack, consisting of a set of {@link Item}s.
+ */
 @Value
 public class Knapsack {
 
+	/**
+	 * The set of items in this knapsack.
+	 */
 	private final Set<Item> items;
 
+	/**
+	 * @return A new instance with random items from {@link Problem#ITEMS}.
+	 */
 	public static Knapsack newInstance() {
 		final var random = RandomRegistry.getRandom();
 		final var items = Problem.ITEMS.stream() //
@@ -23,12 +32,18 @@ public class Knapsack {
 		return knapsack.getWeight() <= Problem.MAX_CAPACITY ? knapsack : newInstance();
 	}
 
+	/**
+	 * @return The summarized profit of all items in this knapsack.
+	 */
 	public int getProfit() {
 		return items.stream() //
 				.mapToInt(Item::getProfit) //
 				.sum();
 	}
 
+	/**
+	 * @return The summarized weight of all items in this knapsack.
+	 */
 	public int getWeight() {
 		return items.stream() //
 				.mapToInt(Item::getWeight) //
