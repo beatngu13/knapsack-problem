@@ -62,10 +62,9 @@ public class UnusuedItemsMutator implements Alterer<ItemGene, Integer> {
 				.forEach(unusedItem -> {
 					final var availableWeight = Problem.MAX_CAPACITY - knapsack.getWeight();
 					final var itemWeight = unusedItem.getWeight();
-					if (availableWeight - itemWeight < 0) {
-						return;
+					if (availableWeight - itemWeight >= 0) {
+						newItems.add(unusedItem);
 					}
-					newItems.add(unusedItem);
 				});
 
 		return Phenotype.of(Genotype.of(new KnapsackChromosome(new Knapsack(newItems))), generation);
