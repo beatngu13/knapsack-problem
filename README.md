@@ -12,6 +12,8 @@ The chosen knapsack problem is by [John Burkardt](https://people.sc.fsu.edu/~jbu
 
 - [x] Use `Gene` interface instead of `AnyGene`
 - [x] Add custom `Alterer`
-- [ ] Create unit tests
+- [ ] Increase test/code coverage
+- [ ] Set up Travis build
+- [ ] Set up SonarCloud
 - [ ] Switch to a multi-objective problem
 - [ ] Improve documentation (e.g. Javadoc)
