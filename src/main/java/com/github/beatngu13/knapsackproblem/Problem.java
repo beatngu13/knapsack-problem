@@ -27,7 +27,7 @@ public class Problem {
 			110, 113, 115, 118, 120);
 
 	public static final List<Item> ITEMS = IntStream.range(0, profits.size()) //
-			.mapToObj(i -> new Item(profits.get(i), weights.get(i))) //
+			.mapToObj(i -> new Item(i, profits.get(i), weights.get(i))) //
 			.collect(Collectors.toList());
 
 	private static final String optimalSolution = "101010111000011";
