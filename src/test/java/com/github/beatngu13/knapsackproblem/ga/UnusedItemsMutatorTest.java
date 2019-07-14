@@ -57,9 +57,7 @@ class UnusedItemsMutatorTest {
 	}
 
 	private static Seq<Phenotype<ItemGene, Integer>> toPhenotypeSeq(final Knapsack... knapsacks) {
-		return Arrays.stream(knapsacks) //
-				.map(UnusedItemsMutatorTest::toPhenotype) //
-				.collect(Seq.toSeq());
+		return Arrays.stream(knapsacks).map(UnusedItemsMutatorTest::toPhenotype).collect(Seq.toSeq());
 	}
 
 	private static Phenotype<ItemGene, Integer> toPhenotype(final Knapsack knapsack) {
