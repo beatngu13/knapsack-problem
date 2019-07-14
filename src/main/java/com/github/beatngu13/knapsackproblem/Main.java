@@ -10,6 +10,7 @@ import io.jenetics.Mutator;
 import io.jenetics.SinglePointCrossover;
 import io.jenetics.engine.Engine;
 import io.jenetics.engine.EvolutionResult;
+import io.jenetics.engine.EvolutionStatistics;
 
 public class Main {
 
@@ -18,10 +19,13 @@ public class Main {
 				.alterers(new SinglePointCrossover<>(0.2), new Mutator<>(0.15), new UnusuedItemsMutator(0.3)) //
 				.constraint(new WeightConstraint()) //
 				.build();
+		final EvolutionStatistics<Integer, ?> stats = EvolutionStatistics.ofNumber();
 		final var bestPhenotype = knapsackEngine.stream() //
 				.limit(100L) //
+				.peek(stats) //
 				.collect(EvolutionResult.toBestGenotype());
 		final var bestKnapsack = ((KnapsackChromosome) bestPhenotype.getChromosome()).getKnapsack();
+		System.out.println(stats);
 		System.out.println("Solution: " + bestKnapsack);
 		System.out.println("Optimum:  " + Problem.OPTIMAL_KNAPSACK);
 	}
