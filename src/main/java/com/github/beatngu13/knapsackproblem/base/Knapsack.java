@@ -37,7 +37,7 @@ public class Knapsack {
 
 	@Override
 	public String toString() {
-		return "Knapsack [profit = " + getProfit() + ", weight = " + getWeight() + "]";
+		return "Knapsack(profit=" + getProfit() + ", weight=" + getWeight() + ")";
 	}
 
 }
