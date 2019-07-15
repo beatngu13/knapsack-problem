@@ -9,7 +9,6 @@ import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import io.jenetics.Chromosome;
 import io.jenetics.util.ISeq;
 import lombok.Value;
-import lombok.val;
 
 @Value
 public class KnapsackChromosome implements Chromosome<ItemGene> {
@@ -33,7 +32,7 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 
 	@Override
 	public Chromosome<ItemGene> newInstance(final ISeq<ItemGene> genes) {
-		final val items = genes.stream() //
+		final var items = genes.stream() //
 				.map(ItemGene::getAllele) //
 				.collect(Collectors.toSet());
 		return new KnapsackChromosome(new Knapsack(items));
