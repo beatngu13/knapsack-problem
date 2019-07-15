@@ -1,12 +1,10 @@
 package com.github.beatngu13.knapsackproblem.so;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
+import com.github.beatngu13.knapsackproblem.util.ProblemUtil;
 
 import lombok.experimental.UtilityClass;
 
@@ -26,19 +24,10 @@ public class Problem {
 			87, 90, 94, 98, 106, //
 			110, 113, 115, 118, 120);
 
-	public static final List<Item> ITEMS = IntStream.range(0, profits.size()) //
-			.mapToObj(i -> new Item(i, profits.get(i), weights.get(i))) //
-			.collect(Collectors.toList());
+	public static final List<Item> ITEMS = ProblemUtil.getItems(profits, weights);
 
 	private static final String optimalSolution = "101010111000011";
 
-	public static final Knapsack OPTIMAL_KNAPSACK = getOptimalKnapsack();
-
-	private static Knapsack getOptimalKnapsack() {
-		return IntStream.range(0, optimalSolution.length()) //
-				.mapToObj(i -> optimalSolution.charAt(i) == '1' ? ITEMS.get(i) : null) //
-				.filter(Objects::nonNull) //
-				.collect(Collectors.collectingAndThen(Collectors.toSet(), Knapsack::new));
-	}
+	public static final Knapsack OPTIMAL_KNAPSACK = ProblemUtil.getOptimalKnapsack(optimalSolution, ITEMS);
 
 }
