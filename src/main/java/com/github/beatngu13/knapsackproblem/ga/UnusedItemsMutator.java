@@ -22,12 +22,12 @@ import io.jenetics.util.Seq;
 public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 
 	/**
-	 * The altering probability.
+	 * The altering probability in the range of [0, 1].
 	 */
 	private final double probability;
 
 	/**
-	 * @param The altering probability.
+	 * @param The altering probability in the range of [0, 1].
 	 */
 	public UnusedItemsMutator(final double probability) {
 		this.probability = probability;
