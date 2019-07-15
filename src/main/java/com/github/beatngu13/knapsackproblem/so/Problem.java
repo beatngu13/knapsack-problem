@@ -1,4 +1,4 @@
-package com.github.beatngu13.knapsackproblem;
+package com.github.beatngu13.knapsackproblem.so;
 
 import java.util.List;
 import java.util.Objects;

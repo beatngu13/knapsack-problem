@@ -1,10 +1,10 @@
-package com.github.beatngu13.knapsackproblem.ga;
+package com.github.beatngu13.knapsackproblem.so.ga;
 
 import java.util.Iterator;
 import java.util.stream.Collectors;
 
-import com.github.beatngu13.knapsackproblem.Problem;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
+import com.github.beatngu13.knapsackproblem.so.Problem;
 
 import io.jenetics.Chromosome;
 import io.jenetics.util.ISeq;

@@ -1,4 +1,4 @@
-package com.github.beatngu13.knapsackproblem.ga;
+package com.github.beatngu13.knapsackproblem.so.ga;
 
 import java.util.function.Function;
 

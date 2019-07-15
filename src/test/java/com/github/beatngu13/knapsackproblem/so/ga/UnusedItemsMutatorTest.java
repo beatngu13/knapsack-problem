@@ -1,4 +1,4 @@
-package com.github.beatngu13.knapsackproblem.ga;
+package com.github.beatngu13.knapsackproblem.so.ga;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,9 +9,12 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import com.github.beatngu13.knapsackproblem.Problem;
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
+import com.github.beatngu13.knapsackproblem.so.Problem;
+import com.github.beatngu13.knapsackproblem.so.ga.ItemGene;
+import com.github.beatngu13.knapsackproblem.so.ga.KnapsackChromosome;
+import com.github.beatngu13.knapsackproblem.so.ga.UnusedItemsMutator;
 
 import io.jenetics.Genotype;
 import io.jenetics.Phenotype;

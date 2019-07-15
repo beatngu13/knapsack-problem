@@ -1,6 +1,6 @@
-package com.github.beatngu13.knapsackproblem.ga;
+package com.github.beatngu13.knapsackproblem.so.ga;
 
-import com.github.beatngu13.knapsackproblem.Problem;
+import com.github.beatngu13.knapsackproblem.so.Problem;
 
 import io.jenetics.Phenotype;
 import io.jenetics.engine.Constraint;

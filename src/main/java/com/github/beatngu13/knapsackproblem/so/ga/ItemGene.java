@@ -1,7 +1,7 @@
-package com.github.beatngu13.knapsackproblem.ga;
+package com.github.beatngu13.knapsackproblem.so.ga;
 
-import com.github.beatngu13.knapsackproblem.Problem;
 import com.github.beatngu13.knapsackproblem.base.Item;
+import com.github.beatngu13.knapsackproblem.so.Problem;
 
 import io.jenetics.Gene;
 import io.jenetics.util.RandomRegistry;

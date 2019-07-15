@@ -1,10 +1,10 @@
-package com.github.beatngu13.knapsackproblem;
+package com.github.beatngu13.knapsackproblem.so;
 
-import com.github.beatngu13.knapsackproblem.ga.KnapsackChromosome;
-import com.github.beatngu13.knapsackproblem.ga.KnapsackCodec;
-import com.github.beatngu13.knapsackproblem.ga.ProfitFitness;
-import com.github.beatngu13.knapsackproblem.ga.UnusedItemsMutator;
-import com.github.beatngu13.knapsackproblem.ga.WeightConstraint;
+import com.github.beatngu13.knapsackproblem.so.ga.KnapsackChromosome;
+import com.github.beatngu13.knapsackproblem.so.ga.KnapsackCodec;
+import com.github.beatngu13.knapsackproblem.so.ga.ProfitFitness;
+import com.github.beatngu13.knapsackproblem.so.ga.UnusedItemsMutator;
+import com.github.beatngu13.knapsackproblem.so.ga.WeightConstraint;
 
 import io.jenetics.Mutator;
 import io.jenetics.SinglePointCrossover;

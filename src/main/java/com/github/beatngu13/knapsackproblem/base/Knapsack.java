@@ -3,7 +3,7 @@ package com.github.beatngu13.knapsackproblem.base;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.github.beatngu13.knapsackproblem.Problem;
+import com.github.beatngu13.knapsackproblem.so.Problem;
 
 import io.jenetics.util.RandomRegistry;
 import lombok.Value;
