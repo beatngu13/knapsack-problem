@@ -27,7 +27,7 @@ public class Main {
 		final var bestKnapsack = ((KnapsackChromosome) bestPhenotype.getChromosome()).getKnapsack();
 		System.out.println(stats);
 		System.out.println("Solution: " + bestKnapsack);
-		System.out.println("Optimum:  " + Problem.OPTIMAL_KNAPSACK);
+		System.out.println("Optimum:  " + SingeObjectiveProblem.OPTIMAL_KNAPSACK);
 	}
 
 }

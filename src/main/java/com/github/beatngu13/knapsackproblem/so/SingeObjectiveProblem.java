@@ -10,7 +10,7 @@ import lombok.experimental.UtilityClass;
 
 // Knapsack problem based on P07 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html.
 @UtilityClass
-public class Problem {
+public class SingeObjectiveProblem {
 
 	public static final int MAX_CAPACITY = 750;
 

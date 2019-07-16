@@ -1,7 +1,7 @@
 package com.github.beatngu13.knapsackproblem.so.ga;
 
 import com.github.beatngu13.knapsackproblem.base.Item;
-import com.github.beatngu13.knapsackproblem.so.Problem;
+import com.github.beatngu13.knapsackproblem.so.SingeObjectiveProblem;
 
 import io.jenetics.Gene;
 import io.jenetics.util.RandomRegistry;
@@ -25,8 +25,8 @@ public class ItemGene implements Gene<Item, ItemGene> {
 	@Override
 	public ItemGene newInstance() {
 		final var random = RandomRegistry.getRandom();
-		final var index = random.nextInt(Problem.ITEMS.size());
-		final var item = Problem.ITEMS.get(index);
+		final var index = random.nextInt(SingeObjectiveProblem.ITEMS.size());
+		final var item = SingeObjectiveProblem.ITEMS.get(index);
 		return new ItemGene(item);
 	}
 
