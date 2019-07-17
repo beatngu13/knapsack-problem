@@ -6,7 +6,17 @@ Whereas most examples around Jenetics are very concise, the goal of this project
 
 ## The Problem
 
-The chosen knapsack problem is by [John Burkardt](https://people.sc.fsu.edu/~jburkardt/) from the [Department of Scientific Computing of the Florida State University](https://sc.fsu.edu/), see P07 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html.
+Both knapsack problems stem from [John Burkardt's home page](https://people.sc.fsu.edu/~jburkardt/) from the [Department of Scientific Computing of the Florida State University](https://sc.fsu.edu/).
+
+While the knapsack problem is a good example to demonstrate single-objective GAs, it should be noted that it is generally not necessary to use [multi-objective optimization](https://en.wikipedia.org/wiki/Multi-objective_optimization) for multiple knapsacks. The different objectives—i.e. the separate knapsacks—do not compete with each other, we are basically only interested in the composition of knapsacks which yields the highest profit. However, the example still helps to get used to Jenetics' relatively new API for multi-objective problems.
+
+### Single-Objective
+
+See P07 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html.
+
+### Multi-Objective
+
+See P06 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html.
 
 ## TODOs
 
