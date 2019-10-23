@@ -26,6 +26,16 @@
 			<artifactId>jenetics</artifactId>
 			<version>5.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>io.jenetics</groupId>
+			<artifactId>jenetics.ext</artifactId>
+			<version>5.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jenetics</groupId>
+			<artifactId>prngine</artifactId>
+			<version>1.0.2</version>
+		</dependency>
 
 		<!-- test -->
 
