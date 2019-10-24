@@ -10,11 +10,11 @@ import io.jenetics.util.ISeq;
 public class ProfitFitness implements Function<ISeq<Knapsack>, Vec<int[]>> {
 
 	@Override
-	public Vec<int[]> apply( final ISeq<Knapsack> knapsacks ) {
+	public Vec<int[]> apply(final ISeq<Knapsack> knapsacks) {
 		final int profits[] = knapsacks.stream() //
-				.map( Knapsack::getProfit ) //
-				.mapToInt( Integer::intValue ) //
+				.map(Knapsack::getProfit) //
+				.mapToInt(Integer::intValue) //
 				.toArray();
-		return Vec.of( profits );
+		return Vec.of(profits);
 	}
 }

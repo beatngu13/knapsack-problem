@@ -34,49 +34,49 @@ public class Knapsack {
 	 */
 	private final int maxCapacity;
 
-	public Knapsack( final Set<Item> items ) {
-		this( items, SingeObjectiveProblem.MAX_CAPACITY );
+	public Knapsack(final Set<Item> items) {
+		this(items, SingeObjectiveProblem.MAX_CAPACITY);
 	}
 
 	/**
-	 * @return A new instance with random items from {@link SingeObjectiveProblem#ITEMS}.
+	 * @return A new instance with random items from
+	 *         {@link SingeObjectiveProblem#ITEMS}.
 	 */
 	public static Knapsack newInstance() {
 		final var random = RandomRegistry.getRandom();
 		final var items = SingeObjectiveProblem.ITEMS.stream() //
-				.filter( item -> random.nextBoolean() ) //
-				.collect( Collectors.toSet() );
-		final var knapsack = new Knapsack( items );
+				.filter(item -> random.nextBoolean()) //
+				.collect(Collectors.toSet());
+		final var knapsack = new Knapsack(items);
 		// Make sure only valid knapsacks are created.
 		return knapsack.getWeight() <= SingeObjectiveProblem.MAX_CAPACITY ? knapsack : newInstance();
 	}
 
 	/**
-	 * @param maxCapacity
-	 *            is the maximum capacity of the knapsack.
-	 * @return A new instance with random items from {@link MultiObjectiveProblem#ITEMS}.
+	 * @param maxCapacity is the maximum capacity of the knapsack.
+	 * @return A new instance with random items from
+	 *         {@link MultiObjectiveProblem#ITEMS}.
 	 */
-	public static Knapsack newInstance( final int maxCapacity ) {
+	public static Knapsack newInstance(final int maxCapacity) {
 		final var random = RandomRegistry.getRandom();
 		final var items = MultiObjectiveProblem.ITEMS.stream() //
-				.filter( item -> random.nextBoolean() ) //
-				.collect( Collectors.toSet() );
-		final var knapsack = new Knapsack( items, maxCapacity );
+				.filter(item -> random.nextBoolean()) //
+				.collect(Collectors.toSet());
+		final var knapsack = new Knapsack(items, maxCapacity);
 
-		return knapsack.getWeight() <= maxCapacity ? knapsack : newInstance( maxCapacity );
+		return knapsack.getWeight() <= maxCapacity ? knapsack : newInstance(maxCapacity);
 	}
 
 	/**
-	 * @param items
-	 *            are the set of items for the knapsack.
-	 * @param maxCapacity
-	 *            is the maximum capacity of the knapsack.
-	 * @return A new instance with random items from {@link MultiObjectiveProblem#ITEMS}.
+	 * @param items       are the set of items for the knapsack.
+	 * @param maxCapacity is the maximum capacity of the knapsack.
+	 * @return A new instance with random items from
+	 *         {@link MultiObjectiveProblem#ITEMS}.
 	 */
-	public static Knapsack newInstance( final Set<Item> items, final int maxCapacity ) {
-		final var knapsack = new Knapsack( items, maxCapacity );
+	public static Knapsack newInstance(final Set<Item> items, final int maxCapacity) {
+		final var knapsack = new Knapsack(items, maxCapacity);
 
-		return knapsack.getWeight() <= maxCapacity ? knapsack : newInstance( maxCapacity );
+		return knapsack.getWeight() <= maxCapacity ? knapsack : newInstance(maxCapacity);
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class Knapsack {
 	 */
 	public int getProfit() {
 		return items.stream() //
-				.mapToInt( Item::getProfit ) //
+				.mapToInt(Item::getProfit) //
 				.sum();
 	}
 
@@ -93,7 +93,7 @@ public class Knapsack {
 	 */
 	public int getWeight() {
 		return items.stream() //
-				.mapToInt( Item::getWeight ) //
+				.mapToInt(Item::getWeight) //
 				.sum();
 	}
 
@@ -104,35 +104,35 @@ public class Knapsack {
 	}
 
 	/**
-	 * @return a list of sets containing randomly selected mutually exclusive items from
-	 *         {@link MultiObjectiveProblem#ITEMS}.
+	 * @return a list of sets containing randomly selected mutually exclusive items
+	 *         from {@link MultiObjectiveProblem#ITEMS}.
 	 */
 	public static List<Set<Item>> generateKnapsacks() {
-		final List<Item> copyOfItems = new ArrayList<>( MultiObjectiveProblem.ITEMS );
-		Collections.shuffle( copyOfItems );
+		final List<Item> copyOfItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
+		Collections.shuffle(copyOfItems);
 
-		final IntPredicate evenFunction = ( i ) -> i % 2 == 0;
+		final IntPredicate evenFunction = (i) -> i % 2 == 0;
 		final IntPredicate oddFunction = evenFunction.negate();
 
-		final HashSet<Item> setOfItems0 =
-				generateSetBasedOnPredicate( copyOfItems, evenFunction, MultiObjectiveProblem.MAX_CAPACITY_0 );
-		final HashSet<Item> setOfItems1 =
-				generateSetBasedOnPredicate( copyOfItems, oddFunction, MultiObjectiveProblem.MAX_CAPACITY_0 );
+		final HashSet<Item> setOfItems0 = generateSetBasedOnPredicate(copyOfItems, evenFunction,
+				MultiObjectiveProblem.MAX_CAPACITY_0);
+		final HashSet<Item> setOfItems1 = generateSetBasedOnPredicate(copyOfItems, oddFunction,
+				MultiObjectiveProblem.MAX_CAPACITY_0);
 
-		return Stream.of( setOfItems0, setOfItems1 ).collect( Collectors.toList() );
+		return Stream.of(setOfItems0, setOfItems1).collect(Collectors.toList());
 	}
 
-	private static HashSet<Item> generateSetBasedOnPredicate( final List<Item> allItems, final IntPredicate predicate,
-			final int maxCapacity ) {
+	private static HashSet<Item> generateSetBasedOnPredicate(final List<Item> allItems, final IntPredicate predicate,
+			final int maxCapacity) {
 		final HashSet<Item> setOfItems = new HashSet<>();
-		IntStream.range( 0, allItems.size() ).filter( predicate ).forEach( i -> {
-			final Item currentItem = allItems.get( i );
-			final int totalWeight =
-					setOfItems.stream().mapToInt( item -> item.getWeight() ).sum() + currentItem.getWeight();
-			if ( totalWeight <= maxCapacity ) {
-				setOfItems.add( currentItem );
+		IntStream.range(0, allItems.size()).filter(predicate).forEach(i -> {
+			final Item currentItem = allItems.get(i);
+			final int totalWeight = setOfItems.stream().mapToInt(item -> item.getWeight()).sum()
+					+ currentItem.getWeight();
+			if (totalWeight <= maxCapacity) {
+				setOfItems.add(currentItem);
 			}
-		} );
+		});
 		return setOfItems;
 	}
 

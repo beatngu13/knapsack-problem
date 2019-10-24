@@ -34,7 +34,7 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 		final var items = genes.stream() //
 				.map(ItemGene::getAllele) //
 				.collect(Collectors.toSet());
-		return new KnapsackChromosome(new Knapsack(items,knapsack.getMaxCapacity()));
+		return new KnapsackChromosome(new Knapsack(items, knapsack.getMaxCapacity()));
 	}
 
 	@Override
@@ -55,4 +55,3 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 	}
 
 }
-
