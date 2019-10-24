@@ -54,7 +54,8 @@ class UnusedItemsMutatorTest {
 
 		final var knapsacks = toKnapsackList(result.getPopulation());
 		// Previously unused items, sorted by profit.
-		final var expected = new Knapsack(new HashSet<Item>(SingeObjectiveProblem.ITEMS.subList(9, SingeObjectiveProblem.ITEMS.size())));
+		final var expected = new Knapsack(
+				new HashSet<Item>(SingeObjectiveProblem.ITEMS.subList(9, SingeObjectiveProblem.ITEMS.size())));
 		assertThat(knapsacks).size().isOne();
 		assertThat(knapsacks).first().isEqualTo(expected);
 	}
