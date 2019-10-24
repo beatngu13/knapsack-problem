@@ -55,7 +55,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 		return Phenotype.of(genotype, generation);
 	}
 
-	public Set<Item> addUnusedItems(final Set<Item> itemsFromKnapsack0, final Set<Item> itemsFromKnapsack1,
+	private Set<Item> addUnusedItems(final Set<Item> itemsFromKnapsack0, final Set<Item> itemsFromKnapsack1,
 			final Knapsack knapsack) {
 		final var newItems = new HashSet<>(knapsack.getItems());
 		MultiObjectiveProblem.ITEMS.stream() //
