@@ -117,7 +117,7 @@ public class Knapsack {
 		final HashSet<Item> setOfItems0 = generateSetBasedOnPredicate(copyOfItems, evenFunction,
 				MultiObjectiveProblem.MAX_CAPACITY_0);
 		final HashSet<Item> setOfItems1 = generateSetBasedOnPredicate(copyOfItems, oddFunction,
-				MultiObjectiveProblem.MAX_CAPACITY_0);
+				MultiObjectiveProblem.MAX_CAPACITY_1);
 
 		return Stream.of(setOfItems0, setOfItems1).collect(Collectors.toList());
 	}
