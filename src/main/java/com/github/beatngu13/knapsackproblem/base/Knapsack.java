@@ -53,7 +53,7 @@ public class Knapsack {
 	}
 
 	/**
-	 * @param maxCapacity is the maximum capacity of the knapsack.
+	 * @param maxCapacity The maximum capacity of the knapsack.
 	 * @return A new instance with random items from
 	 *         {@link MultiObjectiveProblem#ITEMS}.
 	 */
@@ -68,8 +68,8 @@ public class Knapsack {
 	}
 
 	/**
-	 * @param items       are the set of items for the knapsack.
-	 * @param maxCapacity is the maximum capacity of the knapsack.
+	 * @param items       The set of items for the knapsack.
+	 * @param maxCapacity The maximum capacity of the knapsack.
 	 * @return A new instance with random items from
 	 *         {@link MultiObjectiveProblem#ITEMS}.
 	 */
@@ -104,7 +104,7 @@ public class Knapsack {
 	}
 
 	/**
-	 * @return a list of sets containing randomly selected mutually exclusive items
+	 * @return A list of sets containing randomly selected, mutually exclusive items
 	 *         from {@link MultiObjectiveProblem#ITEMS}.
 	 */
 	public static List<Set<Item>> generateKnapsacks() {
