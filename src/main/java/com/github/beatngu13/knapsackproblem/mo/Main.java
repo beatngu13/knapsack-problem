@@ -22,6 +22,7 @@ import io.jenetics.util.ISeq;
 import io.jenetics.util.IntRange;
 
 public class Main {
+
 	public static void main(final String[] args) {
 		final Engine<ItemGene, Vec<int[]>> knapsackEngine = Engine.builder(new ProfitFitness(), new KnapsackCodec()) //
 				.alterers(new SinglePointCrossover<>(0.2), new Mutator<>(0.15), new UnusedItemsMutator(0.3)) //
@@ -48,4 +49,5 @@ public class Main {
 	private static int calcTotalProfit(final Vec<int[]> profit) {
 		return Arrays.stream(profit.data()).sum();
 	}
+
 }
