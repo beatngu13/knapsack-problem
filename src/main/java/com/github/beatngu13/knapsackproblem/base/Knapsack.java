@@ -114,17 +114,17 @@ public class Knapsack {
 		final IntPredicate evenFunction = (i) -> i % 2 == 0;
 		final IntPredicate oddFunction = evenFunction.negate();
 
-		final HashSet<Item> setOfItems0 = generateSetBasedOnPredicate(copyOfItems, evenFunction,
+		final Set<Item> setOfItems0 = generateSetBasedOnPredicate(copyOfItems, evenFunction,
 				MultiObjectiveProblem.MAX_CAPACITY_0);
-		final HashSet<Item> setOfItems1 = generateSetBasedOnPredicate(copyOfItems, oddFunction,
+		final Set<Item> setOfItems1 = generateSetBasedOnPredicate(copyOfItems, oddFunction,
 				MultiObjectiveProblem.MAX_CAPACITY_1);
 
 		return Stream.of(setOfItems0, setOfItems1).collect(Collectors.toList());
 	}
 
-	private static HashSet<Item> generateSetBasedOnPredicate(final List<Item> allItems, final IntPredicate predicate,
+	private static Set<Item> generateSetBasedOnPredicate(final List<Item> allItems, final IntPredicate predicate,
 			final int maxCapacity) {
-		final HashSet<Item> setOfItems = new HashSet<>();
+		final Set<Item> setOfItems = new HashSet<>();
 		IntStream.range(0, allItems.size()).filter(predicate).forEach(i -> {
 			final Item currentItem = allItems.get(i);
 			final int totalWeight = setOfItems.stream().mapToInt(item -> item.getWeight()).sum()
