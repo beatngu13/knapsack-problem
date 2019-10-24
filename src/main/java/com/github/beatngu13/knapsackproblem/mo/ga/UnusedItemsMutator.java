@@ -63,7 +63,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 				.filter(item -> !itemsFromKnapsack1.contains(item)) // Filter items from second knapsack.
 				.sorted(Comparator.comparing(Item::getProfit).reversed()) // Sort by highest profit.
 				.forEach(unusedItem -> {
-					final var newKnapsackWeight = new Knapsack(newItems).getWeight();
+					final var newKnapsackWeight = new Knapsack(newItems, knapsack.getMaxCapacity()).getWeight();
 					final var availableWeight = knapsack.getMaxCapacity() - newKnapsackWeight;
 					final var unusedItemWeight = unusedItem.getWeight();
 					if (availableWeight - unusedItemWeight >= 0) {
