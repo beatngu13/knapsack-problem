@@ -14,6 +14,7 @@ public class MultiObjectiveProblem {
 
 	public static final int MAX_CAPACITY_0 = 103;
 	public static final int MAX_CAPACITY_1 = 156;
+	public static final int NUMBER_OF_KNAPSACKS = 2;
 
 	private static final List<Integer> profits = List.of( //
 			78, 35, 89, 36, 94, //
@@ -28,7 +29,9 @@ public class MultiObjectiveProblem {
 	private static final String optimalSolution_0 = "1010010000";
 	private static final String optimalSolution_1 = "0001100010";
 
-	public static final Knapsack OPTIMAL_KNAPSACK_0 = ProblemUtil.getOptimalKnapsack(optimalSolution_0, ITEMS);
-	public static final Knapsack OPTIMAL_KNAPSACK_1 = ProblemUtil.getOptimalKnapsack(optimalSolution_1, ITEMS);
+	public static final Knapsack OPTIMAL_KNAPSACK_0 = ProblemUtil.getOptimalKnapsack(optimalSolution_0, ITEMS,
+			MAX_CAPACITY_0);
+	public static final Knapsack OPTIMAL_KNAPSACK_1 = ProblemUtil.getOptimalKnapsack(optimalSolution_1, ITEMS,
+			MAX_CAPACITY_1);
 
 }

@@ -12,6 +12,7 @@
 		<encoding>UTF-8</encoding>
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
+		<jenetics.version>5.0.0</jenetics.version>
 		<maven.surefire.version>2.22.2</maven.surefire.version>
 	</properties>
 
@@ -24,7 +25,12 @@
 		<dependency>
 			<groupId>io.jenetics</groupId>
 			<artifactId>jenetics</artifactId>
-			<version>5.0.0</version>
+			<version>${jenetics.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jenetics</groupId>
+			<artifactId>jenetics.ext</artifactId>
+			<version>${jenetics.version}</version>
 		</dependency>
 
 		<!-- test -->

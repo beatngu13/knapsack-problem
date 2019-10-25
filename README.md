@@ -22,8 +22,8 @@ See P06 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/kna
 
 - [x] Use `Gene` interface instead of `AnyGene`
 - [x] Add custom `Alterer`
+- [x] Add multi-objective problem
 - [ ] Increase test/code coverage
 - [ ] Set up Travis build
 - [ ] Set up SonarCloud
-- [ ] Switch to a multi-objective problem
 - [ ] Improve documentation (e.g. Javadoc)

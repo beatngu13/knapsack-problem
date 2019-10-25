@@ -20,11 +20,12 @@ public class ProblemUtil {
 				.collect(Collectors.toList());
 	}
 
-	public static Knapsack getOptimalKnapsack(final String optimalSolution, final List<Item> items) {
+	public static Knapsack getOptimalKnapsack(final String optimalSolution, final List<Item> items,
+			final int maxCapacity) {
 		return IntStream.range(0, optimalSolution.length()) //
 				.mapToObj(i -> optimalSolution.charAt(i) == '1' ? items.get(i) : null) //
 				.filter(Objects::nonNull) //
-				.collect(Collectors.collectingAndThen(Collectors.toSet(), Knapsack::new));
+				.collect(Collectors.collectingAndThen(Collectors.toSet(), i -> new Knapsack(i, maxCapacity)));
 	}
 
 }
