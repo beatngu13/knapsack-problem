@@ -10,7 +10,7 @@ import com.github.beatngu13.knapsackproblem.mo.ga.KnapsackChromosome;
 import com.github.beatngu13.knapsackproblem.mo.ga.KnapsackCodec;
 import com.github.beatngu13.knapsackproblem.mo.ga.ProfitFitness;
 import com.github.beatngu13.knapsackproblem.mo.ga.UnusedItemsMutator;
-import com.github.beatngu13.knapsackproblem.mo.ga.WeightConstraint;
+import com.github.beatngu13.knapsackproblem.mo.ga.WeightAndItemsConstraint;
 
 import io.jenetics.Mutator;
 import io.jenetics.Phenotype;
@@ -27,7 +27,7 @@ public class Main {
 	public static void main(final String[] args) {
 		final Engine<ItemGene, Vec<int[]>> knapsackEngine = Engine.builder(new ProfitFitness(), new KnapsackCodec()) //
 				.alterers(new SinglePointCrossover<>(0.2), new Mutator<>(0.15), new UnusedItemsMutator(0.3)) //
-				.constraint(new WeightConstraint()) //
+				.constraint(new WeightAndItemsConstraint()) //
 				.build();
 
 		final ISeq<Phenotype<ItemGene, Vec<int[]>>> paretoSet = knapsackEngine.stream() //
