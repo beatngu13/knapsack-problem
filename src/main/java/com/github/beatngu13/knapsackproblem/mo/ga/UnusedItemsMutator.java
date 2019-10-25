@@ -23,8 +23,14 @@ import io.jenetics.util.Seq;
  */
 public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 
+	/**
+	 * The altering probability in the range of [0, 1].
+	 */
 	private final double probability;
 
+	/**
+	 * @param The altering probability in the range of [0, 1].
+	 */
 	public UnusedItemsMutator(final double probability) {
 		this.probability = probability;
 	}
@@ -58,6 +64,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 	private Set<Item> addUnusedItems(final Set<Item> itemsFromKnapsack0, final Set<Item> itemsFromKnapsack1,
 			final Knapsack knapsack) {
 		final var newItems = new HashSet<>(knapsack.getItems());
+
 		MultiObjectiveProblem.ITEMS.stream() //
 				.filter(item -> !itemsFromKnapsack0.contains(item)) // Filter items from first knapsack.
 				.filter(item -> !itemsFromKnapsack1.contains(item)) // Filter items from second knapsack.
@@ -70,6 +77,8 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 						newItems.add(unusedItem);
 					}
 				});
+
 		return newItems;
 	}
+
 }
