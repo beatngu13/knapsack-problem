@@ -28,6 +28,7 @@ public class SingeObjectiveProblem {
 
 	private static final String optimalSolution = "101010111000011";
 
-	public static final Knapsack OPTIMAL_KNAPSACK = ProblemUtil.getOptimalKnapsack(optimalSolution, ITEMS);
+	public static final Knapsack OPTIMAL_KNAPSACK = ProblemUtil.getOptimalKnapsack(optimalSolution, ITEMS,
+			MAX_CAPACITY);
 
 }
