@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
+import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.mo.ga.ItemGene;
 import com.github.beatngu13.knapsackproblem.mo.ga.KnapsackChromosome;
 import com.github.beatngu13.knapsackproblem.mo.ga.KnapsackCodec;
@@ -34,19 +35,23 @@ public class Main {
 				.collect(MOEA.toParetoSet(IntRange.of(20, 50)));
 
 		final Phenotype<ItemGene, Vec<int[]>> optimalSolution = Collections.max(paretoSet.asList(),
-				Comparator.comparing(phenotype -> calcTotalProfit(phenotype.getFitness())));
+				Comparator.comparing(Main::getPhenotypeProfit));
 
-		final var bestKnapsack0 = ((KnapsackChromosome) optimalSolution.getGenotype().getChromosome(0)).getKnapsack();
-		final var bestKnapsack1 = ((KnapsackChromosome) optimalSolution.getGenotype().getChromosome(1)).getKnapsack();
+		final var bestKnapsack0 = getKnapsack(optimalSolution, 0);
+		final var bestKnapsack1 = getKnapsack(optimalSolution, 1);
 		System.out.println("Solution 0: " + bestKnapsack0);
 		System.out.println("Optimum 0:  " + MultiObjectiveProblem.OPTIMAL_KNAPSACK_0);
 		System.out.println("Solution 1: " + bestKnapsack1);
 		System.out.println("Optimum 1:  " + MultiObjectiveProblem.OPTIMAL_KNAPSACK_1);
-
 	}
 
-	private static int calcTotalProfit(final Vec<int[]> profit) {
+	private static int getPhenotypeProfit(final Phenotype<ItemGene, Vec<int[]>> phenotype) {
+		final Vec<int[]> profit = phenotype.getFitness();
 		return Arrays.stream(profit.data()).sum();
+	}
+
+	private static Knapsack getKnapsack(final Phenotype<ItemGene, Vec<int[]>> phenotype, final int index) {
+		return ((KnapsackChromosome) phenotype.getGenotype().getChromosome(index)).getKnapsack();
 	}
 
 }
