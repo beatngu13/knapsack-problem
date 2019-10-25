@@ -1,12 +1,10 @@
 package com.github.beatngu13.knapsackproblem.mo.ga;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
-import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
 
 import io.jenetics.Chromosome;
 import io.jenetics.Genotype;
@@ -27,12 +25,11 @@ public class WeightConstraint implements Constraint<ItemGene, Vec<int[]>> {
 	@Override
 	public Phenotype<ItemGene, Vec<int[]>> repair(final Phenotype<ItemGene, Vec<int[]>> individual,
 			final long generation) {
-		final List<Set<Item>> x = Knapsack.generateKnapsacks();
-		final var k0 = new KnapsackChromosome(Knapsack.newInstance(x.get(0), MultiObjectiveProblem.MAX_CAPACITY_0));
-		final var k1 = new KnapsackChromosome(Knapsack.newInstance(x.get(1), MultiObjectiveProblem.MAX_CAPACITY_1));
-		final Genotype<ItemGene> z = Genotype.of(k0, k1);
-
-		return Phenotype.of(z, generation);
+		final var knapsacks = Knapsack.newInstances();
+		final var kc0 = new KnapsackChromosome(knapsacks.get(0));
+		final var kc1 = new KnapsackChromosome(knapsacks.get(1));
+		final var g = Genotype.of(kc0, kc1);
+		return Phenotype.of(g, generation);
 	}
 
 	private boolean hasRepeatedItems(final Phenotype<ItemGene, Vec<int[]>> individual) {

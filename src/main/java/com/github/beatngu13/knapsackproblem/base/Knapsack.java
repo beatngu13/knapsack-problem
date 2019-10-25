@@ -1,6 +1,7 @@
 package com.github.beatngu13.knapsackproblem.base;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -8,7 +9,6 @@ import java.util.Set;
 import java.util.function.IntPredicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
 import com.github.beatngu13.knapsackproblem.so.SingeObjectiveProblem;
@@ -80,6 +80,40 @@ public class Knapsack {
 	}
 
 	/**
+	 * @return A list of new instances with randomly selected, mutually exclusive
+	 *         items from {@link MultiObjectiveProblem#ITEMS}.
+	 */
+	public static List<Knapsack> newInstances() {
+		final List<Item> copyOfItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
+		Collections.shuffle(copyOfItems);
+
+		final IntPredicate evenFunction = (i) -> i % 2 == 0;
+		final IntPredicate oddFunction = evenFunction.negate();
+
+		final Set<Item> setOfItems0 = generateSetBasedOnPredicate(copyOfItems, evenFunction,
+				MultiObjectiveProblem.MAX_CAPACITY_0);
+		final Set<Item> setOfItems1 = generateSetBasedOnPredicate(copyOfItems, oddFunction,
+				MultiObjectiveProblem.MAX_CAPACITY_1);
+
+		return Arrays.asList(new Knapsack(setOfItems0, MultiObjectiveProblem.MAX_CAPACITY_0),
+				new Knapsack(setOfItems1, MultiObjectiveProblem.MAX_CAPACITY_1));
+	}
+
+	private static Set<Item> generateSetBasedOnPredicate(final List<Item> allItems, final IntPredicate predicate,
+			final int maxCapacity) {
+		final Set<Item> setOfItems = new HashSet<>();
+		IntStream.range(0, allItems.size()).filter(predicate).forEach(i -> {
+			final Item currentItem = allItems.get(i);
+			final int totalWeight = setOfItems.stream().mapToInt(item -> item.getWeight()).sum()
+					+ currentItem.getWeight();
+			if (totalWeight <= maxCapacity) {
+				setOfItems.add(currentItem);
+			}
+		});
+		return setOfItems;
+	}
+
+	/**
 	 * @return The summarized profit of all items in this knapsack.
 	 */
 	public int getProfit() {
@@ -101,39 +135,6 @@ public class Knapsack {
 	public String toString() {
 		return "Knapsack(profit=" + getProfit() + ", weight=" + getWeight() + ", max capacity=" + getMaxCapacity()
 				+ ")";
-	}
-
-	/**
-	 * @return A list of sets containing randomly selected, mutually exclusive items
-	 *         from {@link MultiObjectiveProblem#ITEMS}.
-	 */
-	public static List<Set<Item>> generateKnapsacks() {
-		final List<Item> copyOfItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
-		Collections.shuffle(copyOfItems);
-
-		final IntPredicate evenFunction = (i) -> i % 2 == 0;
-		final IntPredicate oddFunction = evenFunction.negate();
-
-		final Set<Item> setOfItems0 = generateSetBasedOnPredicate(copyOfItems, evenFunction,
-				MultiObjectiveProblem.MAX_CAPACITY_0);
-		final Set<Item> setOfItems1 = generateSetBasedOnPredicate(copyOfItems, oddFunction,
-				MultiObjectiveProblem.MAX_CAPACITY_1);
-
-		return Stream.of(setOfItems0, setOfItems1).collect(Collectors.toList());
-	}
-
-	private static Set<Item> generateSetBasedOnPredicate(final List<Item> allItems, final IntPredicate predicate,
-			final int maxCapacity) {
-		final Set<Item> setOfItems = new HashSet<>();
-		IntStream.range(0, allItems.size()).filter(predicate).forEach(i -> {
-			final Item currentItem = allItems.get(i);
-			final int totalWeight = setOfItems.stream().mapToInt(item -> item.getWeight()).sum()
-					+ currentItem.getWeight();
-			if (totalWeight <= maxCapacity) {
-				setOfItems.add(currentItem);
-			}
-		});
-		return setOfItems;
 	}
 
 }
