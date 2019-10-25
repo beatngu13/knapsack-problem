@@ -19,7 +19,7 @@ import io.jenetics.util.RandomRegistry;
 import io.jenetics.util.Seq;
 
 /**
- * Mutates a knapsack by adding unused items.
+ * Mutates two knapsacks by adding unused items.
  */
 public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 
