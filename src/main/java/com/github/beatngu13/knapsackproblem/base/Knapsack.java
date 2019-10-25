@@ -6,9 +6,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.IntPredicate;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
 import com.github.beatngu13.knapsackproblem.so.SingeObjectiveProblem;
@@ -84,39 +82,31 @@ public class Knapsack {
 	 *         items from {@link MultiObjectiveProblem#ITEMS}.
 	 */
 	public static List<Knapsack> newInstances() {
-		final List<Item> shuffledItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
-		Collections.shuffle(shuffledItems);
+		final List<Item> remainingItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
+		Collections.shuffle(remainingItems);
 
-		final IntPredicate isEven = (i) -> i % 2 == 0;
-		final IntPredicate isOdd = isEven.negate();
+		final Set<Item> items0 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_0);
+		final Set<Item> items1 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_1);
 
-		final Set<Item> setOfItems0 = generateSetBasedOnPredicate(shuffledItems, isEven,
-				MultiObjectiveProblem.MAX_CAPACITY_0);
-		final Set<Item> setOfItems1 = generateSetBasedOnPredicate(shuffledItems, isOdd,
-				MultiObjectiveProblem.MAX_CAPACITY_1);
-
-		return Arrays.asList(new Knapsack(setOfItems0, MultiObjectiveProblem.MAX_CAPACITY_0),
-				new Knapsack(setOfItems1, MultiObjectiveProblem.MAX_CAPACITY_1));
+		return Arrays.asList(new Knapsack(items0, MultiObjectiveProblem.MAX_CAPACITY_0),
+				new Knapsack(items1, MultiObjectiveProblem.MAX_CAPACITY_1));
 	}
 
-	private static Set<Item> generateSetBasedOnPredicate(final List<Item> allItems, final IntPredicate predicate,
-			final int maxCapacity) {
-		final Set<Item> setOfItems = new HashSet<>();
+	private static Set<Item> takeWhileWithinMaxCapacity(final List<Item> remainingItems, final int maxCapacity) {
+		final var items = new HashSet<Item>();
+		var totalWeight = 0;
 
-		IntStream.range(0, allItems.size()) //
-				.filter(predicate) //
-				.forEach(i -> {
-					final Item currentItem = allItems.get(i);
-					final int totalWeight = setOfItems.stream() //
-							.mapToInt(item -> item.getWeight()) //
-							.sum() //
-							+ currentItem.getWeight();
-					if (totalWeight <= maxCapacity) {
-						setOfItems.add(currentItem);
-					}
-				});
+		for (final Item item : remainingItems) {
+			final var itemWeight = item.getWeight();
+			if (totalWeight + itemWeight <= maxCapacity) {
+				items.add(item);
+				totalWeight += itemWeight;
+			}
+		}
 
-		return setOfItems;
+		remainingItems.removeAll(items);
+
+		return items;
 	}
 
 	/**
