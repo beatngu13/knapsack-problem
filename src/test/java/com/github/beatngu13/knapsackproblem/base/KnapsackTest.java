@@ -21,9 +21,9 @@ class KnapsackTest {
 		final var knapsacks = Knapsack.newInstances();
 		final var knapsack0 = knapsacks.get(0);
 		final var knapsack1 = knapsacks.get(1);
-		assertThat(knapsack0.getMaxCapacity()).isLessThanOrEqualTo(MultiObjectiveProblem.MAX_CAPACITY_0);
+		assertThat(knapsack0.getMaxCapacity()).isEqualTo(MultiObjectiveProblem.MAX_CAPACITY_0);
 		assertThat(knapsack0.getWeight()).isLessThanOrEqualTo(knapsack0.getMaxCapacity());
-		assertThat(knapsack1.getMaxCapacity()).isLessThanOrEqualTo(MultiObjectiveProblem.MAX_CAPACITY_1);
+		assertThat(knapsack1.getMaxCapacity()).isEqualTo(MultiObjectiveProblem.MAX_CAPACITY_1);
 		assertThat(knapsack1.getWeight()).isLessThanOrEqualTo(knapsack1.getMaxCapacity());
 	}
 
