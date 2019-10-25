@@ -36,13 +36,12 @@ public class Main {
 		final Phenotype<ItemGene, Vec<int[]>> optimalSolution = Collections.max(paretoSet.asList(),
 				Comparator.comparing(phenotype -> calcTotalProfit(phenotype.getFitness())));
 
-		System.out.println("Expected Optimum 0:  " + MultiObjectiveProblem.OPTIMAL_KNAPSACK_0);
-		System.out.println("Expected Optimum 1:  " + MultiObjectiveProblem.OPTIMAL_KNAPSACK_1);
-		System.out.println("");
-		System.out.println("Optimum solution 0:  "
-				+ ((KnapsackChromosome) optimalSolution.getGenotype().getChromosome(0)).getKnapsack());
-		System.out.println("Optimum solution 1:  "
-				+ ((KnapsackChromosome) optimalSolution.getGenotype().getChromosome(1)).getKnapsack());
+		final var bestKnapsack0 = ((KnapsackChromosome) optimalSolution.getGenotype().getChromosome(0)).getKnapsack();
+		final var bestKnapsack1 = ((KnapsackChromosome) optimalSolution.getGenotype().getChromosome(1)).getKnapsack();
+		System.out.println("Solution 0: " + bestKnapsack0);
+		System.out.println("Optimum 0:  " + MultiObjectiveProblem.OPTIMAL_KNAPSACK_0);
+		System.out.println("Solution 1: " + bestKnapsack1);
+		System.out.println("Optimum 1:  " + MultiObjectiveProblem.OPTIMAL_KNAPSACK_1);
 
 	}
 
