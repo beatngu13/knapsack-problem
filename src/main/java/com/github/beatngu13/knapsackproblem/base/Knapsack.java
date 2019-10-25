@@ -84,15 +84,15 @@ public class Knapsack {
 	 *         items from {@link MultiObjectiveProblem#ITEMS}.
 	 */
 	public static List<Knapsack> newInstances() {
-		final List<Item> copyOfItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
-		Collections.shuffle(copyOfItems);
+		final List<Item> shuffledItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
+		Collections.shuffle(shuffledItems);
 
-		final IntPredicate evenFunction = (i) -> i % 2 == 0;
-		final IntPredicate oddFunction = evenFunction.negate();
+		final IntPredicate isEven = (i) -> i % 2 == 0;
+		final IntPredicate isOdd = isEven.negate();
 
-		final Set<Item> setOfItems0 = generateSetBasedOnPredicate(copyOfItems, evenFunction,
+		final Set<Item> setOfItems0 = generateSetBasedOnPredicate(shuffledItems, isEven,
 				MultiObjectiveProblem.MAX_CAPACITY_0);
-		final Set<Item> setOfItems1 = generateSetBasedOnPredicate(copyOfItems, oddFunction,
+		final Set<Item> setOfItems1 = generateSetBasedOnPredicate(shuffledItems, isOdd,
 				MultiObjectiveProblem.MAX_CAPACITY_1);
 
 		return Arrays.asList(new Knapsack(setOfItems0, MultiObjectiveProblem.MAX_CAPACITY_0),
@@ -102,14 +102,20 @@ public class Knapsack {
 	private static Set<Item> generateSetBasedOnPredicate(final List<Item> allItems, final IntPredicate predicate,
 			final int maxCapacity) {
 		final Set<Item> setOfItems = new HashSet<>();
-		IntStream.range(0, allItems.size()).filter(predicate).forEach(i -> {
-			final Item currentItem = allItems.get(i);
-			final int totalWeight = setOfItems.stream().mapToInt(item -> item.getWeight()).sum()
-					+ currentItem.getWeight();
-			if (totalWeight <= maxCapacity) {
-				setOfItems.add(currentItem);
-			}
-		});
+
+		IntStream.range(0, allItems.size()) //
+				.filter(predicate) //
+				.forEach(i -> {
+					final Item currentItem = allItems.get(i);
+					final int totalWeight = setOfItems.stream() //
+							.mapToInt(item -> item.getWeight()) //
+							.sum() //
+							+ currentItem.getWeight();
+					if (totalWeight <= maxCapacity) {
+						setOfItems.add(currentItem);
+					}
+				});
+
 		return setOfItems;
 	}
 
