@@ -39,7 +39,7 @@ class MultiObjectiveIT {
 		final EvolutionStatistics<Vec<int[]>, ?> stats = EvolutionStatistics.ofComparable();
 
 		final ISeq<Phenotype<ItemGene, Vec<int[]>>> paretoSet = knapsackEngine.stream() //
-				.limit(Limits.byFixedGeneration(300)) //
+				.limit(Limits.byFixedGeneration(300L)) //
 				.peek(stats) //
 				.collect(MOEA.toParetoSet(IntRange.of(20, 50)));
 
