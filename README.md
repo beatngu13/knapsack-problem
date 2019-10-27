@@ -6,17 +6,12 @@ The goal of this project is to provide a detailed implementation that solves the
 
 ## The Problem(s)
 
-The project consists of _two_ implementations: a single- (`so` package) and a [multi-objective optimization](https://en.wikipedia.org/wiki/Multi-objective_optimization) (`mo` package). Both knapsack problems stem from [John Burkardt's home page](https://people.sc.fsu.edu/~jburkardt/) from the [Department of Scientific Computing of the Florida State University](https://sc.fsu.edu/).
+The project consists of _two_ implementations: a single- (`so` package) and a [multi-objective optimization](https://en.wikipedia.org/wiki/Multi-objective_optimization) (`mo` package). Both knapsack problems stem from [John Burkardt's home page](https://people.sc.fsu.edu/~jburkardt/) from the [Department of Scientific Computing of the Florida State University](https://sc.fsu.edu/):
 
-While the knapsack problem is a good example to demonstrate a single-objective GA, it should be noted that it is generally not necessary to use a multi-objective GA for multiple knapsacks. The different objectives—i.e. the separate knapsacks—do not compete with each other. One is basically only interested in the combination of knapsacks that yields the highest profit. However, the example still helps to get used to Jenetics' relatively new API for multi-objective problems (`io.jenetics.ext.moea`).
+* Single-objective: see P07 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html, implemented within the integration test `SingleObjectiveIT`.
+* Multi-objective: see P06 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html, implemented within the integration test `MultiObjectiveIT`.
 
-### Single-Objective
-
-See P07 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html.
-
-### Multi-Objective
-
-See P06 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html.
+Note that while the knapsack problem is a good example to demonstrate a single-objective GA, it is generally not necessary to use a multi-objective GA for multiple knapsacks. The different objectives—i.e. the separate knapsacks—do not compete with each other. One is basically only interested in the combination of knapsacks that yields the highest profit. However, the example still helps to get used to Jenetics' relatively new API for multi-objective problems (`io.jenetics.ext.moea`).
 
 ## TODOs
 
