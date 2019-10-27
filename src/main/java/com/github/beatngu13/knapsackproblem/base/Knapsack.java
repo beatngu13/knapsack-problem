@@ -46,7 +46,7 @@ public class Knapsack {
 				.filter(item -> random.nextBoolean()) //
 				.collect(Collectors.toSet());
 		final var knapsack = new Knapsack(items);
-		// Make sure only valid knapsacks are created.
+
 		return knapsack.getWeight() <= SingeObjectiveProblem.MAX_CAPACITY ? knapsack : newInstance();
 	}
 
