@@ -30,7 +30,7 @@ public class SingleObjectiveIT {
 		final EvolutionStatistics<Integer, ?> stats = EvolutionStatistics.ofNumber();
 
 		final Genotype<ItemGene> bestPhenotype = knapsackEngine.stream() //
-				.limit(100L) //
+				.limit(200L) //
 				.peek(stats) //
 				.collect(EvolutionResult.toBestGenotype());
 
