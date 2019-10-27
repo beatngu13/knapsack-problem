@@ -10,7 +10,6 @@ import com.github.beatngu13.knapsackproblem.base.Knapsack;
 
 import lombok.experimental.UtilityClass;
 
-// Knapsack problem based on P07 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html.
 @UtilityClass
 public class ProblemUtil {
 
