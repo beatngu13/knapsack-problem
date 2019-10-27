@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/beatngu13/knapsack-problem.svg?branch=master)](https://travis-ci.com/beatngu13/knapsack-problem)
+
 # knapsack-problem
 
 [Jenetics](http://jenetics.io/) is an awesome Java library for [genetic algorithms (GAs)](https://en.wikipedia.org/wiki/Genetic_algorithm). Unfortunately, many examples for Jenetics are very concise, which makes it hard for beginners to use them as a starting point for their custom problems.
@@ -18,7 +20,7 @@ Note that while the knapsack problem is a good example to demonstrate a single-o
 - [x] Use `Gene` interface instead of `AnyGene`
 - [x] Add custom `Alterer`
 - [x] Add multi-objective problem
-- [ ] Set up Travis build
+- [x] Set up Travis build
 - [ ] Set up SonarCloud
 - [ ] Improve documentation (e.g. Javadoc)
 - [ ] Increase test/code coverage
