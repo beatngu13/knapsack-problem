@@ -21,6 +21,6 @@ Note that while the knapsack problem is a good example to demonstrate a single-o
 - [x] Add custom `Alterer`
 - [x] Add multi-objective problem
 - [x] Set up Travis build
-- [ ] Set up SonarCloud
+- [x] Set up SonarCloud
 - [ ] Improve documentation (e.g. Javadoc)
 - [ ] Increase test/code coverage
