@@ -1,5 +1,9 @@
 package com.github.beatngu13.knapsackproblem.so;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
+
 import com.github.beatngu13.knapsackproblem.so.ga.ItemGene;
 import com.github.beatngu13.knapsackproblem.so.ga.KnapsackChromosome;
 import com.github.beatngu13.knapsackproblem.so.ga.KnapsackCodec;
@@ -14,9 +18,10 @@ import io.jenetics.engine.Engine;
 import io.jenetics.engine.EvolutionResult;
 import io.jenetics.engine.EvolutionStatistics;
 
-public class Main {
+public class SingleObjectiveIT {
 
-	public static void main(final String[] args) {
+	@Test
+	void should_find_optimal_solution() throws Exception {
 		final Engine<ItemGene, Integer> knapsackEngine = Engine.builder(new ProfitFitness(), new KnapsackCodec()) //
 				.alterers(new SinglePointCrossover<>(0.2), new Mutator<>(0.15), new UnusedItemsMutator(0.3)) //
 				.constraint(new WeightConstraint()) //
@@ -30,9 +35,8 @@ public class Main {
 				.collect(EvolutionResult.toBestGenotype());
 
 		final var bestKnapsack = ((KnapsackChromosome) bestPhenotype.getChromosome()).getKnapsack();
+		assertThat(bestKnapsack).isEqualTo(SingeObjectiveProblem.OPTIMAL_KNAPSACK);
 		System.out.println(stats);
-		System.out.println("Solution: " + bestKnapsack);
-		System.out.println("Optimum:  " + SingeObjectiveProblem.OPTIMAL_KNAPSACK);
 	}
 
 }
