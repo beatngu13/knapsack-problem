@@ -29,7 +29,7 @@ public class WeightAndItemsConstraint implements Constraint<ItemGene, Vec<int[]>
 	private boolean hasWeightWithinMaxCapacity(final Phenotype<ItemGene, Vec<int[]>> individual) {
 		return individual.getGenotype().stream() //
 				.map(genotype -> ((KnapsackChromosome) genotype).getKnapsack()) //
-				.allMatch(knapsack -> knapsack.getWeight() <= knapsack.getMaxCapacity());
+				.allMatch(Knapsack::isWithinMaxCapacity);
 	}
 
 	private boolean hasMutuallyExclusiveItems(final Phenotype<ItemGene, Vec<int[]>> individual) {

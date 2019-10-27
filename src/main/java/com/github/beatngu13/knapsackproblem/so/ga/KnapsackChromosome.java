@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.stream.Collectors;
 
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
-import com.github.beatngu13.knapsackproblem.so.SingeObjectiveProblem;
 
 import io.jenetics.Chromosome;
 import io.jenetics.util.ISeq;
@@ -17,7 +16,7 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 
 	@Override
 	public boolean isValid() {
-		return knapsack.getWeight() <= SingeObjectiveProblem.MAX_CAPACITY;
+		return knapsack.isWithinMaxCapacity();
 	}
 
 	@Override

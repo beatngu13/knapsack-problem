@@ -47,7 +47,7 @@ public class Knapsack {
 				.collect(Collectors.toSet());
 		final var knapsack = new Knapsack(items);
 
-		return knapsack.getWeight() <= SingeObjectiveProblem.MAX_CAPACITY ? knapsack : newInstance();
+		return knapsack.isWithinMaxCapacity() ? knapsack : newInstance();
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class Knapsack {
 				.collect(Collectors.toSet());
 		final var knapsack = new Knapsack(items, maxCapacity);
 
-		return knapsack.getWeight() <= maxCapacity ? knapsack : newInstance(maxCapacity);
+		return knapsack.isWithinMaxCapacity() ? knapsack : newInstance(maxCapacity);
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class Knapsack {
 	public static Knapsack newInstance(final Set<Item> items, final int maxCapacity) {
 		final var knapsack = new Knapsack(items, maxCapacity);
 
-		return knapsack.getWeight() <= maxCapacity ? knapsack : newInstance(maxCapacity);
+		return knapsack.isWithinMaxCapacity() ? knapsack : newInstance(maxCapacity);
 	}
 
 	/**
@@ -125,6 +125,14 @@ public class Knapsack {
 		return items.stream() //
 				.mapToInt(Item::getWeight) //
 				.sum();
+	}
+
+	/**
+	 * @return <code>true</code> if the summarized weight of all items does not
+	 *         exceed the maximum capacity.
+	 */
+	public boolean isWithinMaxCapacity() {
+		return getWeight() <= maxCapacity;
 	}
 
 	@Override

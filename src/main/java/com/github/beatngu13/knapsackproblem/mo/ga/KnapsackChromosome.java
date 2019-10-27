@@ -16,7 +16,7 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 
 	@Override
 	public boolean isValid() {
-		return knapsack.getWeight() <= knapsack.getMaxCapacity();
+		return knapsack.isWithinMaxCapacity();
 	}
 
 	@Override
