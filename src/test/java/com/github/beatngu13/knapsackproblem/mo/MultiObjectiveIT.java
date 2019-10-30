@@ -23,6 +23,7 @@ import io.jenetics.engine.Engine;
 import io.jenetics.engine.EvolutionStatistics;
 import io.jenetics.engine.Limits;
 import io.jenetics.ext.moea.MOEA;
+import io.jenetics.ext.moea.NSGA2Selector;
 import io.jenetics.ext.moea.Vec;
 import io.jenetics.util.ISeq;
 import io.jenetics.util.IntRange;
@@ -32,6 +33,7 @@ class MultiObjectiveIT {
 	@Test
 	void should_find_optimal_solution() throws Exception {
 		final Engine<ItemGene, Vec<int[]>> knapsackEngine = Engine.builder(new ProfitFitness(), new KnapsackCodec()) //
+				.selector(NSGA2Selector.ofVec()) //
 				.alterers(new SinglePointCrossover<>(0.2), new Mutator<>(0.15), new UnusedItemsMutator(0.3)) //
 				.constraint(new WeightAndItemsConstraint()) //
 				.build();
