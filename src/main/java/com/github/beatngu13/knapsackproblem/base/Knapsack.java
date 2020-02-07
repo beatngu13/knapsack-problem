@@ -1,7 +1,6 @@
 package com.github.beatngu13.knapsackproblem.base;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -88,7 +87,7 @@ public class Knapsack {
 		final Set<Item> items0 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_0);
 		final Set<Item> items1 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_1);
 
-		return Arrays.asList(new Knapsack(items0, MultiObjectiveProblem.MAX_CAPACITY_0),
+		return List.of(new Knapsack(items0, MultiObjectiveProblem.MAX_CAPACITY_0),
 				new Knapsack(items1, MultiObjectiveProblem.MAX_CAPACITY_1));
 	}
 
