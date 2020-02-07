@@ -51,14 +51,14 @@ class MultiObjectiveIT {
 						.collect(MOEA.toParetoSet(IntRange.of(20, 50))));
 
 		final Phenotype<ItemGene, Vec<int[]>> optimalSolution = Collections.max(paretoSet.asList(),
-				Comparator.comparing(MultiObjectiveIT::getPhenotypeProfit));
+				Comparator.comparing(MultiObjectiveIT::getProfit));
 		assertThat(getKnapsacks(optimalSolution)).containsExactlyInAnyOrder( //
 				MultiObjectiveProblem.OPTIMAL_KNAPSACK_0, //
 				MultiObjectiveProblem.OPTIMAL_KNAPSACK_1);
 		System.out.println(stats);
 	}
 
-	private static int getPhenotypeProfit(final Phenotype<ItemGene, Vec<int[]>> phenotype) {
+	private static int getProfit(final Phenotype<ItemGene, Vec<int[]>> phenotype) {
 		final Vec<int[]> profit = phenotype.getFitness();
 		return Arrays.stream(profit.data()).sum();
 	}
