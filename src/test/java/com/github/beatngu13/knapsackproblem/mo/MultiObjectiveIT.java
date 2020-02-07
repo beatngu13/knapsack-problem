@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 
@@ -51,11 +52,9 @@ class MultiObjectiveIT {
 
 		final Phenotype<ItemGene, Vec<int[]>> optimalSolution = Collections.max(paretoSet.asList(),
 				Comparator.comparing(MultiObjectiveIT::getPhenotypeProfit));
-
-		final var bestKnapsack0 = getKnapsack(optimalSolution, 0);
-		final var bestKnapsack1 = getKnapsack(optimalSolution, 1);
-		assertThat(bestKnapsack0).isEqualTo(MultiObjectiveProblem.OPTIMAL_KNAPSACK_0);
-		assertThat(bestKnapsack1).isEqualTo(MultiObjectiveProblem.OPTIMAL_KNAPSACK_1);
+		assertThat(getKnapsacks(optimalSolution)).containsExactlyInAnyOrder( //
+				MultiObjectiveProblem.OPTIMAL_KNAPSACK_0, //
+				MultiObjectiveProblem.OPTIMAL_KNAPSACK_1);
 		System.out.println(stats);
 	}
 
@@ -64,8 +63,10 @@ class MultiObjectiveIT {
 		return Arrays.stream(profit.data()).sum();
 	}
 
-	private static Knapsack getKnapsack(final Phenotype<ItemGene, Vec<int[]>> phenotype, final int index) {
-		return ((KnapsackChromosome) phenotype.getGenotype().getChromosome(index)).getKnapsack();
+	private static Stream<Knapsack> getKnapsacks(final Phenotype<ItemGene, Vec<int[]>> phenotype) {
+		return phenotype.getGenotype().stream() //
+				.map(KnapsackChromosome.class::cast) //
+				.map(KnapsackChromosome::getKnapsack);
 	}
 
 }
