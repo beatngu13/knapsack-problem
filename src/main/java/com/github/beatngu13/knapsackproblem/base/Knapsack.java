@@ -83,7 +83,7 @@ public class Knapsack {
 	 */
 	public static List<Knapsack> newInstances() {
 		final List<Item> remainingItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
-		Collections.shuffle(remainingItems);
+		Collections.shuffle(remainingItems, RandomRegistry.getRandom());
 
 		final Set<Item> items0 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_0);
 		final Set<Item> items1 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_1);
