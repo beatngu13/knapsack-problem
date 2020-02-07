@@ -43,7 +43,7 @@ class MultiObjectiveIT {
 
 		final EvolutionStatistics<Vec<int[]>, ?> stats = EvolutionStatistics.ofComparable();
 
-		final ISeq<Phenotype<ItemGene, Vec<int[]>>> paretoSet = RandomRegistry.with(new Random(0L), // Fixed seed for reproducibility.
+		final ISeq<Phenotype<ItemGene, Vec<int[]>>> paretoSet = RandomRegistry.with(new Random(1L), // Fixed seed for reproducibility.
 				rand -> knapsackEngine.stream() //
 						.limit(Limits.byFixedGeneration(300L)) //
 						.peek(stats) //
