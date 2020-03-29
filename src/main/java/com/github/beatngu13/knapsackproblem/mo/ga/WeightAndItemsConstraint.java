@@ -3,6 +3,7 @@ package com.github.beatngu13.knapsackproblem.mo.ga;
 import java.util.Collections;
 
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
+import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 
 import io.jenetics.Genotype;
 import io.jenetics.Phenotype;
@@ -19,7 +20,7 @@ public class WeightAndItemsConstraint implements Constraint<ItemGene, Vec<int[]>
 	@Override
 	public Phenotype<ItemGene, Vec<int[]>> repair(final Phenotype<ItemGene, Vec<int[]>> individual,
 			final long generation) {
-		final var knapsacks = Knapsack.newInstances();
+		final var knapsacks = KnapsackFactory.createRandomMO();
 		final var chromosome0 = new KnapsackChromosome(knapsacks.get(0));
 		final var chromosome1 = new KnapsackChromosome(knapsacks.get(1));
 		final var genotype = Genotype.of(chromosome0, chromosome1);

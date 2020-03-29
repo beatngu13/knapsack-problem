@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.stream.Collectors;
 
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
+import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 
 import io.jenetics.Chromosome;
 import io.jenetics.util.ISeq;
@@ -26,7 +27,7 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 
 	@Override
 	public Chromosome<ItemGene> newInstance() {
-		return new KnapsackChromosome(Knapsack.newInstance(knapsack.getMaxCapacity()));
+		return new KnapsackChromosome(KnapsackFactory.createRandomMO(knapsack.getMaxCapacity()));
 	}
 
 	@Override
@@ -34,7 +35,7 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 		final var items = genes.stream() //
 				.map(ItemGene::getAllele) //
 				.collect(Collectors.toSet());
-		return new KnapsackChromosome(new Knapsack(items, knapsack.getMaxCapacity()));
+		return new KnapsackChromosome(KnapsackFactory.create(items, knapsack.getMaxCapacity()));
 	}
 
 	@Override

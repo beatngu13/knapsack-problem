@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
+import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 
 import lombok.experimental.UtilityClass;
 
@@ -37,7 +38,7 @@ public class ProblemUtil {
 				.mapToObj(i -> optimalSolution.charAt(i) == '1' ? items.get(i) : null) //
 				.filter(Objects::nonNull) //
 				.collect(Collectors.collectingAndThen(Collectors.toSet(),
-						optimalItems -> new Knapsack(optimalItems, maxCapacity)));
+						optimalItems -> KnapsackFactory.create(optimalItems, maxCapacity)));
 	}
 
 }

@@ -3,6 +3,7 @@ package com.github.beatngu13.knapsackproblem.so.ga;
 import java.util.function.Function;
 
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
+import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 
 import io.jenetics.Genotype;
 import io.jenetics.engine.Codec;
@@ -12,7 +13,7 @@ public class KnapsackCodec implements Codec<Knapsack, ItemGene> {
 
 	@Override
 	public Factory<Genotype<ItemGene>> encoding() {
-		return Genotype.of(new KnapsackChromosome(Knapsack.newInstance()));
+		return Genotype.of(new KnapsackChromosome(KnapsackFactory.createRandomSO()));
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
+import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
 
 import io.jenetics.Alterer;
@@ -54,9 +55,8 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 		final var newItems0 = addUnusedItems(knapsack0.getItems(), knapsack1.getItems(), knapsack0);
 		final var newItems1 = addUnusedItems(newItems0, knapsack1.getItems(), knapsack1);
 
-		final var genotype = Genotype.of(
-				new KnapsackChromosome(new Knapsack(newItems0, MultiObjectiveProblem.MAX_CAPACITY_0)),
-				new KnapsackChromosome(new Knapsack(newItems1, MultiObjectiveProblem.MAX_CAPACITY_1)));
+		final var genotype = Genotype.of(new KnapsackChromosome(KnapsackFactory.createMO0(newItems0)),
+				new KnapsackChromosome(KnapsackFactory.createMO1(newItems1)));
 
 		return Phenotype.of(genotype, generation);
 	}
@@ -70,8 +70,8 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 				.filter(item -> !itemsFromKnapsack1.contains(item)) // Filter items from second knapsack.
 				.sorted(Comparator.comparing(Item::getProfit).reversed()) // Sort by highest profit.
 				.forEach(unusedItem -> {
-					final var newKnapsackWeight = new Knapsack(newItems, knapsack.getMaxCapacity()).getWeight();
-					final var availableWeight = knapsack.getMaxCapacity() - newKnapsackWeight;
+					final var newKnapsack = KnapsackFactory.create(newItems, knapsack.getMaxCapacity());
+					final var availableWeight = knapsack.getMaxCapacity() - newKnapsack.getWeight();
 					final var unusedItemWeight = unusedItem.getWeight();
 					if (availableWeight - unusedItemWeight >= 0) {
 						newItems.add(unusedItem);

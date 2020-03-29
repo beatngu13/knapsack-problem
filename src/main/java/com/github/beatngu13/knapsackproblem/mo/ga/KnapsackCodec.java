@@ -4,6 +4,7 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
+import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
 
 import io.jenetics.Genotype;
@@ -16,7 +17,7 @@ public class KnapsackCodec implements Codec<ISeq<Knapsack>, ItemGene> {
 	@Override
 	public Factory<Genotype<ItemGene>> encoding() {
 		return () -> {
-			final var knapsacks = Knapsack.newInstances();
+			final var knapsacks = KnapsackFactory.createRandomMO();
 			final var kc0 = new KnapsackChromosome(knapsacks.get(0));
 			final var kc1 = new KnapsackChromosome(knapsacks.get(1));
 			return Genotype.of(kc0, kc1);
