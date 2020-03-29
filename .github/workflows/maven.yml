@@ -6,9 +6,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # fetch unshallow to enable blame for Sonar
-    - name: Fetch unshallow
+    - name: Checkout
       uses: actions/checkout@v2
+
+      # fetch unshallow to enable blame for Sonar
+    - name: Unshallow
       run: |
         git fetch --prune --unshallow
 
