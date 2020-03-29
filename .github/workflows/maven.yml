@@ -19,3 +19,4 @@ jobs:
         -Dsonar.projectKey=com.github.beatngu13:knapsack-problem
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
