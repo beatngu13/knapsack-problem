@@ -6,11 +6,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
+    - name: Checkout repo
       uses: actions/checkout@v2
 
       # fetch unshallow to enable blame for Sonar
-    - name: Unshallow
+    - name: Fetch unshallow
       run: |
         git fetch --prune --unshallow
 
@@ -19,7 +19,7 @@ jobs:
       with:
         java-version: 11
 
-    - name: Cache m2
+    - name: Cache Maven
       uses: actions/cache@v1
       with:
         path: ~/.m2/repository/
