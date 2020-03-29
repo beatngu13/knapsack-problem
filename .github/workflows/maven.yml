@@ -39,6 +39,8 @@ jobs:
         -Dsonar.host.url=https://sonarcloud.io
         -Dsonar.organization=beatngu13-github
         -Dsonar.projectKey=com.github.beatngu13:knapsack-problem
+        -Dsonar.java.source=11
+        -Dsonar.java.target=11
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
