@@ -24,7 +24,7 @@ public class ItemGene implements Gene<Item, ItemGene> {
 
 	@Override
 	public ItemGene newInstance() {
-		final var random = RandomRegistry.getRandom();
+		final var random = RandomRegistry.random();
 		final var index = random.nextInt(SingeObjectiveProblem.ITEMS.size());
 		final var item = SingeObjectiveProblem.ITEMS.get(index);
 		return new ItemGene(item);

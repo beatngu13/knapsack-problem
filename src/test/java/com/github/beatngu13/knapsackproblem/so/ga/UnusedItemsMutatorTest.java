@@ -12,9 +12,6 @@ import org.junit.jupiter.api.Test;
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.so.SingeObjectiveProblem;
-import com.github.beatngu13.knapsackproblem.so.ga.ItemGene;
-import com.github.beatngu13.knapsackproblem.so.ga.KnapsackChromosome;
-import com.github.beatngu13.knapsackproblem.so.ga.UnusedItemsMutator;
 
 import io.jenetics.Genotype;
 import io.jenetics.Phenotype;
@@ -29,7 +26,7 @@ class UnusedItemsMutatorTest {
 
 		final var result = cut.alter(toPhenotypeSeq(knapsack), 1L);
 
-		final var knapsacks = toKnapsackList(result.getPopulation());
+		final var knapsacks = toKnapsackList(result.population());
 		assertThat(knapsacks).size().isOne();
 		assertThat(knapsacks).first().isEqualTo(knapsack);
 	}
@@ -40,7 +37,7 @@ class UnusedItemsMutatorTest {
 
 		final var result = cut.alter(toPhenotypeSeq(SingeObjectiveProblem.OPTIMAL_KNAPSACK), 1L);
 
-		final var knapsacks = toKnapsackList(result.getPopulation());
+		final var knapsacks = toKnapsackList(result.population());
 		assertThat(knapsacks).size().isOne();
 		assertThat(knapsacks).first().isEqualTo(SingeObjectiveProblem.OPTIMAL_KNAPSACK);
 	}
@@ -52,7 +49,7 @@ class UnusedItemsMutatorTest {
 
 		final var result = cut.alter(toPhenotypeSeq(knapsack), 1L);
 
-		final var knapsacks = toKnapsackList(result.getPopulation());
+		final var knapsacks = toKnapsackList(result.population());
 		// Previously unused items, sorted by profit.
 		final var expected = new Knapsack(
 				new HashSet<Item>(SingeObjectiveProblem.ITEMS.subList(9, SingeObjectiveProblem.ITEMS.size())));
@@ -73,7 +70,7 @@ class UnusedItemsMutatorTest {
 	}
 
 	private static Knapsack toKnapsack(final Phenotype<ItemGene, Integer> individual) {
-		return ((KnapsackChromosome) individual.getGenotype().getChromosome()).getKnapsack();
+		return ((KnapsackChromosome) individual.genotype().chromosome()).getKnapsack();
 	}
 
 }

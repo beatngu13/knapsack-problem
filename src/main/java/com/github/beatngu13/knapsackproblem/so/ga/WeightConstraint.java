@@ -7,14 +7,14 @@ public class WeightConstraint implements Constraint<ItemGene, Integer> {
 
 	@Override
 	public boolean test(final Phenotype<ItemGene, Integer> individual) {
-		final var knapsack = ((KnapsackChromosome) individual.getGenotype().getChromosome()).getKnapsack();
+		final var knapsack = ((KnapsackChromosome) individual.genotype().chromosome()).getKnapsack();
 		return knapsack.isWithinMaxCapacity();
 	}
 
 	@Override
 	public Phenotype<ItemGene, Integer> repair(final Phenotype<ItemGene, Integer> individual, final long generation) {
 		// No repair like Constraint#of(Predicate).
-		return Phenotype.of(individual.getGenotype().newInstance(), generation);
+		return Phenotype.of(individual.genotype().newInstance(), generation);
 	}
 
 }

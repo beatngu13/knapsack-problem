@@ -58,12 +58,12 @@ class MultiObjectiveIT {
 	}
 
 	private static int getProfit(final Phenotype<ItemGene, Vec<int[]>> phenotype) {
-		final Vec<int[]> profit = phenotype.getFitness();
+		final Vec<int[]> profit = phenotype.fitness();
 		return Arrays.stream(profit.data()).sum();
 	}
 
 	private static Stream<Knapsack> getKnapsacks(final Phenotype<ItemGene, Vec<int[]>> phenotype) {
-		return phenotype.getGenotype().stream() //
+		return phenotype.genotype().stream() //
 				.map(KnapsackChromosome.class::cast) //
 				.map(KnapsackChromosome::getKnapsack);
 	}

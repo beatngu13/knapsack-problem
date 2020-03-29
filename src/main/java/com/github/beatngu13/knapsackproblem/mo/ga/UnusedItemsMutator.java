@@ -38,7 +38,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 	@Override
 	public AltererResult<ItemGene, Vec<int[]>> alter(final Seq<Phenotype<ItemGene, Vec<int[]>>> population,
 			final long generation) {
-		final var random = RandomRegistry.getRandom();
+		final var random = RandomRegistry.random();
 		return population.stream() //
 				.map(individual -> random.nextInt(100) <= probability * 100 //
 						? addUnusedItems(individual, generation) //
@@ -48,8 +48,8 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 
 	private Phenotype<ItemGene, Vec<int[]>> addUnusedItems(final Phenotype<ItemGene, Vec<int[]>> individual,
 			final long generation) {
-		final var knapsack0 = ((KnapsackChromosome) individual.getGenotype().getChromosome(0)).getKnapsack();
-		final var knapsack1 = ((KnapsackChromosome) individual.getGenotype().getChromosome(1)).getKnapsack();
+		final var knapsack0 = ((KnapsackChromosome) individual.genotype().get(0)).getKnapsack();
+		final var knapsack1 = ((KnapsackChromosome) individual.genotype().get(1)).getKnapsack();
 
 		final var newItems0 = addUnusedItems(knapsack0.getItems(), knapsack1.getItems(), knapsack0);
 		final var newItems1 = addUnusedItems(newItems0, knapsack1.getItems(), knapsack1);

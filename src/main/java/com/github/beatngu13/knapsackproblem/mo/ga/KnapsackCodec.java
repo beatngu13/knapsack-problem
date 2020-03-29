@@ -27,7 +27,7 @@ public class KnapsackCodec implements Codec<ISeq<Knapsack>, ItemGene> {
 	public Function<Genotype<ItemGene>, ISeq<Knapsack>> decoder() {
 		return genotype -> {
 			return IntStream.range(0, MultiObjectiveProblem.NUMBER_OF_KNAPSACKS) //
-					.mapToObj(i -> ((KnapsackChromosome) genotype.getChromosome(i)).getKnapsack()) //
+					.mapToObj(i -> ((KnapsackChromosome) genotype.get(i)).getKnapsack()) //
 					.collect(ISeq.toISeq());
 		};
 	}

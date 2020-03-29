@@ -40,7 +40,7 @@ public class Knapsack {
 	 *         {@link SingeObjectiveProblem#ITEMS}.
 	 */
 	public static Knapsack newInstance() {
-		final var random = RandomRegistry.getRandom();
+		final var random = RandomRegistry.random();
 		final var items = SingeObjectiveProblem.ITEMS.stream() //
 				.filter(item -> random.nextBoolean()) //
 				.collect(Collectors.toSet());
@@ -55,7 +55,7 @@ public class Knapsack {
 	 *         {@link MultiObjectiveProblem#ITEMS}.
 	 */
 	public static Knapsack newInstance(final int maxCapacity) {
-		final var random = RandomRegistry.getRandom();
+		final var random = RandomRegistry.random();
 		final var items = MultiObjectiveProblem.ITEMS.stream() //
 				.filter(item -> random.nextBoolean()) //
 				.collect(Collectors.toSet());
@@ -82,7 +82,7 @@ public class Knapsack {
 	 */
 	public static List<Knapsack> newInstances() {
 		final List<Item> remainingItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
-		Collections.shuffle(remainingItems, RandomRegistry.getRandom());
+		Collections.shuffle(remainingItems, RandomRegistry.random());
 
 		final Set<Item> items0 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_0);
 		final Set<Item> items1 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_1);

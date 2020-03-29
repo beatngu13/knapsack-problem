@@ -17,7 +17,7 @@ public class KnapsackCodec implements Codec<Knapsack, ItemGene> {
 
 	@Override
 	public Function<Genotype<ItemGene>, Knapsack> decoder() {
-		return genotype -> ((KnapsackChromosome) genotype.getChromosome()).getKnapsack();
+		return genotype -> ((KnapsackChromosome) genotype.chromosome()).getKnapsack();
 	}
 
 }
