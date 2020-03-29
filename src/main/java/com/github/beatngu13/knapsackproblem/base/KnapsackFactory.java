@@ -95,6 +95,7 @@ public class KnapsackFactory {
 		final List<Item> remainingItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
 		Collections.shuffle(remainingItems, RandomRegistry.random());
 		final Set<Item> items0 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_0);
+		remainingItems.removeAll(items0);
 		final Set<Item> items1 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_1);
 		return List.of(createMO0(items0), createMO1(items1));
 	}
@@ -109,7 +110,6 @@ public class KnapsackFactory {
 				totalWeight += itemWeight;
 			}
 		}
-		remainingItems.removeAll(items);
 		return items;
 	}
 
