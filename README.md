@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/beatngu13/knapsack-problem.svg?branch=master)](https://travis-ci.com/beatngu13/knapsack-problem)
+![.github/workflows/maven.yml](https://github.com/beatngu13/knapsack-problem/workflows/.github/workflows/maven.yml/badge.svg)
 
 # knapsack-problem
 
