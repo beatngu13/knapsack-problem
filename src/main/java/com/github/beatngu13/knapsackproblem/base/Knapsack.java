@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
-import com.github.beatngu13.knapsackproblem.so.SingeObjectiveProblem;
+import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
 
 import io.jenetics.util.RandomRegistry;
 import lombok.AllArgsConstructor;
@@ -32,16 +32,16 @@ public class Knapsack {
 	private final int maxCapacity;
 
 	public Knapsack(final Set<Item> items) {
-		this(items, SingeObjectiveProblem.MAX_CAPACITY);
+		this(items, SingleObjectiveProblem.MAX_CAPACITY);
 	}
 
 	/**
 	 * @return A new instance with random items from
-	 *         {@link SingeObjectiveProblem#ITEMS}.
+	 *         {@link SingleObjectiveProblem#ITEMS}.
 	 */
 	public static Knapsack newInstance() {
 		final var random = RandomRegistry.random();
-		final var items = SingeObjectiveProblem.ITEMS.stream() //
+		final var items = SingleObjectiveProblem.ITEMS.stream() //
 				.filter(item -> random.nextBoolean()) //
 				.collect(Collectors.toSet());
 		final var knapsack = new Knapsack(items);

@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
-import com.github.beatngu13.knapsackproblem.so.SingeObjectiveProblem;
+import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
 
 import io.jenetics.Alterer;
 import io.jenetics.AltererResult;
@@ -55,12 +55,12 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 		final var knapsack = ((KnapsackChromosome) individual.genotype().chromosome()).getKnapsack();
 		final var newItems = new HashSet<Item>(knapsack.getItems());
 
-		SingeObjectiveProblem.ITEMS.stream() //
+		SingleObjectiveProblem.ITEMS.stream() //
 				.filter(item -> !knapsack.getItems().contains(item)) // Filter for unused items.
 				.sorted(Comparator.comparing(Item::getProfit).reversed()) // Sort by highest profit.
 				.forEach(unusedItem -> {
 					final var newKnapsackWeight = new Knapsack(newItems).getWeight();
-					final var availableWeight = SingeObjectiveProblem.MAX_CAPACITY - newKnapsackWeight;
+					final var availableWeight = SingleObjectiveProblem.MAX_CAPACITY - newKnapsackWeight;
 					final var unusedItemWeight = unusedItem.getWeight();
 					if (availableWeight - unusedItemWeight >= 0) {
 						newItems.add(unusedItem);

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
-import com.github.beatngu13.knapsackproblem.so.SingeObjectiveProblem;
+import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
 
 import io.jenetics.Genotype;
 import io.jenetics.Phenotype;
@@ -35,11 +35,11 @@ class UnusedItemsMutatorTest {
 	void should_not_mutate_knapsack_without_available_weight() throws Exception {
 		final var cut = new UnusedItemsMutator(1.0);
 
-		final var result = cut.alter(toPhenotypeSeq(SingeObjectiveProblem.OPTIMAL_KNAPSACK), 1L);
+		final var result = cut.alter(toPhenotypeSeq(SingleObjectiveProblem.OPTIMAL_KNAPSACK), 1L);
 
 		final var knapsacks = toKnapsackList(result.population());
 		assertThat(knapsacks).size().isOne();
-		assertThat(knapsacks).first().isEqualTo(SingeObjectiveProblem.OPTIMAL_KNAPSACK);
+		assertThat(knapsacks).first().isEqualTo(SingleObjectiveProblem.OPTIMAL_KNAPSACK);
 	}
 
 	@Test
@@ -52,7 +52,7 @@ class UnusedItemsMutatorTest {
 		final var knapsacks = toKnapsackList(result.population());
 		// Previously unused items, sorted by profit.
 		final var expected = new Knapsack(
-				new HashSet<Item>(SingeObjectiveProblem.ITEMS.subList(9, SingeObjectiveProblem.ITEMS.size())));
+				new HashSet<Item>(SingleObjectiveProblem.ITEMS.subList(9, SingleObjectiveProblem.ITEMS.size())));
 		assertThat(knapsacks).size().isOne();
 		assertThat(knapsacks).first().isEqualTo(expected);
 	}

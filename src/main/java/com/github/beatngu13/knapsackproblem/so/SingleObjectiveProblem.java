@@ -11,7 +11,7 @@ import lombok.experimental.UtilityClass;
 
 // Knapsack problem based on P07 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html.
 @UtilityClass
-public class SingeObjectiveProblem {
+public class SingleObjectiveProblem {
 
 	private static final List<Integer> PROFITS = List.of( //
 			135, 139, 149, 150, 156, //
