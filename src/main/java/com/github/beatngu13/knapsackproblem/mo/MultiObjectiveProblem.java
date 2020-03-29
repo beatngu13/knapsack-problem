@@ -9,7 +9,10 @@ import com.github.beatngu13.knapsackproblem.util.ProblemUtil;
 
 import lombok.experimental.UtilityClass;
 
-// Knapsack problem based on P06 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html.
+/**
+ * Multi-objective knapsack problem based on P06 from <a href=
+ * "https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html">https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html</a>.
+ */
 @UtilityClass
 public class MultiObjectiveProblem {
 

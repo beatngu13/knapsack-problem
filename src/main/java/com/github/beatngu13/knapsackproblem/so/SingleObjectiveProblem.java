@@ -9,7 +9,10 @@ import com.github.beatngu13.knapsackproblem.util.ProblemUtil;
 
 import lombok.experimental.UtilityClass;
 
-// Knapsack problem based on P07 from https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html.
+/**
+ * Single-objective knapsack problem based on P07 from <a href=
+ * "https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html">https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html</a>.
+ */
 @UtilityClass
 public class SingleObjectiveProblem {
 
