@@ -15,7 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Value;
 
 /**
- * A knapsack, consisting of a set of {@link Item}s.
+ * A knapsack, consisting of a set of {@link Item}s and a maximum capacity.
  */
 @Value
 @AllArgsConstructor

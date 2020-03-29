@@ -3,7 +3,7 @@ package com.github.beatngu13.knapsackproblem.base;
 import lombok.Value;
 
 /**
- * A knapsack item, consisting of a unique ID, a profit, and a weight.
+ * A knapsack item, consisting of a unique ID, a profit and a weight.
  */
 @Value
 public class Item {
