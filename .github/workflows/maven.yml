@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
+    - name: Check out repo
       uses: actions/checkout@v2
 
       # fetch unshallow to enable blame for Sonar
