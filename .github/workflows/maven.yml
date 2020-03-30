@@ -1,5 +1,9 @@
 on: push
 
+env:
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   build:
 
@@ -41,6 +45,3 @@ jobs:
         -Dsonar.projectKey=com.github.beatngu13:knapsack-problem
         -Dsonar.java.source=11
         -Dsonar.java.target=11
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
