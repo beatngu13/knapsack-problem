@@ -1,4 +1,4 @@
-![.github/workflows/maven.yml](https://github.com/beatngu13/knapsack-problem/workflows/.github/workflows/maven.yml/badge.svg)
+![.github/workflows/build.yml](https://github.com/beatngu13/knapsack-problem/workflows/.github/workflows/build.yml/badge.svg)
 
 # knapsack-problem
 
