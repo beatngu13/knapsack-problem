@@ -34,7 +34,8 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 
 	@Override
 	public ItemGene get(final int index) {
-		return stream() //
+		return knapsack.getItems().stream() //
+				.map(ItemGene::new) //
 				.collect(Collectors.toList()) //
 				.get(index);
 	}
