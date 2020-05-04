@@ -18,7 +18,7 @@ public class ItemGene implements Gene<Item, ItemGene> {
 	}
 
 	@Override
-	public Item getAllele() {
+	public Item allele() {
 		return item;
 	}
 

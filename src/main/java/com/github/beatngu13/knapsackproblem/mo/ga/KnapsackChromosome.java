@@ -1,6 +1,5 @@
 package com.github.beatngu13.knapsackproblem.mo.ga;
 
-import java.util.Iterator;
 import java.util.stream.Collectors;
 
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
@@ -21,11 +20,6 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 	}
 
 	@Override
-	public Iterator<ItemGene> iterator() {
-		return toSeq().iterator();
-	}
-
-	@Override
 	public Chromosome<ItemGene> newInstance() {
 		return new KnapsackChromosome(KnapsackFactory.createRandomMO(knapsack.getMaxCapacity()));
 	}
@@ -33,26 +27,21 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 	@Override
 	public Chromosome<ItemGene> newInstance(final ISeq<ItemGene> genes) {
 		final var items = genes.stream() //
-				.map(ItemGene::getAllele) //
+				.map(ItemGene::allele) //
 				.collect(Collectors.toSet());
 		return new KnapsackChromosome(KnapsackFactory.create(items, knapsack.getMaxCapacity()));
 	}
 
 	@Override
-	public ItemGene getGene(final int index) {
-		return toSeq().get(index);
+	public ItemGene get(final int index) {
+		return stream() //
+				.collect(Collectors.toList()) //
+				.get(index);
 	}
 
 	@Override
 	public int length() {
 		return knapsack.getItems().size();
-	}
-
-	@Override
-	public ISeq<ItemGene> toSeq() {
-		return knapsack.getItems().stream() //
-				.map(ItemGene::new) //
-				.collect(ISeq.toISeq());
 	}
 
 }
