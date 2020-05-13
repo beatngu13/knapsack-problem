@@ -11,10 +11,12 @@ import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
 import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
 
 import io.jenetics.util.RandomRegistry;
-import lombok.experimental.UtilityClass;
 
-@UtilityClass
 public class KnapsackFactory {
+
+	private KnapsackFactory() {
+
+	}
 
 	// GENERIC
 

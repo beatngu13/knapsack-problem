@@ -7,14 +7,15 @@ import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.util.ProblemUtil;
 
-import lombok.experimental.UtilityClass;
-
 /**
  * Multi-objective knapsack problem based on P06 from <a href=
  * "https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html">https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html</a>.
  */
-@UtilityClass
 public class MultiObjectiveProblem {
+
+	private MultiObjectiveProblem() {
+
+	}
 
 	private static final List<Integer> PROFITS = List.of( //
 			78, 35, 89, 36, 94, //
