@@ -5,12 +5,8 @@ import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
 
 import io.jenetics.Gene;
 import io.jenetics.util.RandomRegistry;
-import lombok.Value;
 
-@Value
-public class ItemGene implements Gene<Item, ItemGene> {
-
-	private final Item item;
+public record ItemGene(Item item) implements Gene<Item, ItemGene> {
 
 	@Override
 	public boolean isValid() {

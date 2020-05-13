@@ -71,7 +71,7 @@ class UnusedItemsMutatorTest {
 	}
 
 	private static Knapsack toKnapsack(final Phenotype<ItemGene, Integer> individual) {
-		return ((KnapsackChromosome) individual.genotype().chromosome()).getKnapsack();
+		return ((KnapsackChromosome) individual.genotype().chromosome()).knapsack();
 	}
 
 }

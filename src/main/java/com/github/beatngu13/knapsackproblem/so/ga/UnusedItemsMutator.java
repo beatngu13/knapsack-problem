@@ -52,7 +52,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 	 */
 	private Phenotype<ItemGene, Integer> addUnusedItems(final Phenotype<ItemGene, Integer> individual,
 			final long generation) {
-		final var knapsack = ((KnapsackChromosome) individual.genotype().chromosome()).getKnapsack();
+		final var knapsack = ((KnapsackChromosome) individual.genotype().chromosome()).knapsack();
 		final var newItems = new HashSet<Item>(knapsack.items());
 
 		SingleObjectiveProblem.ITEMS.stream() //
