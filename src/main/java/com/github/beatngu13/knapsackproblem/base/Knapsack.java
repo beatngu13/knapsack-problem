@@ -2,41 +2,29 @@ package com.github.beatngu13.knapsackproblem.base;
 
 import java.util.Set;
 
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
-
 /**
  * A knapsack, consisting of a set of {@link Item}s and a maximum capacity.
+ * 
+ * @param items       The set of items in this knapsack.
+ * @param maxCapacity The maximum capacity of the knapsack.
  */
-@Value
-@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-public class Knapsack {
-
-	/**
-	 * The set of items in this knapsack.
-	 */
-	private final Set<Item> items;
-	/**
-	 * The maximum capacity of the knapsack.
-	 */
-	private final int maxCapacity;
+public record Knapsack(Set<Item> items, int maxCapacity) {
 
 	/**
 	 * @return The summarized profit of all items in this knapsack.
 	 */
-	public int getProfit() {
+	public int profit() {
 		return items.stream() //
-				.mapToInt(Item::getProfit) //
+				.mapToInt(Item::profit) //
 				.sum();
 	}
 
 	/**
 	 * @return The summarized weight of all items in this knapsack.
 	 */
-	public int getWeight() {
+	public int weight() {
 		return items.stream() //
-				.mapToInt(Item::getWeight) //
+				.mapToInt(Item::weight) //
 				.sum();
 	}
 
@@ -45,13 +33,12 @@ public class Knapsack {
 	 *         exceed the maximum capacity.
 	 */
 	public boolean isWithinMaxCapacity() {
-		return getWeight() <= maxCapacity;
+		return weight() <= maxCapacity;
 	}
 
 	@Override
 	public String toString() {
-		return "Knapsack(profit=" + getProfit() + ", weight=" + getWeight() + ", max capacity=" + getMaxCapacity()
-				+ ")";
+		return "Knapsack[profit=" + profit() + ", weight=" + weight() + ", maxCapacity=" + maxCapacity() + "]";
 	}
 
 }

@@ -104,7 +104,7 @@ public class KnapsackFactory {
 		final var items = new HashSet<Item>();
 		var totalWeight = 0;
 		for (final Item item : remainingItems) {
-			final var itemWeight = item.getWeight();
+			final var itemWeight = item.weight();
 			if (totalWeight + itemWeight <= maxCapacity) {
 				items.add(item);
 				totalWeight += itemWeight;

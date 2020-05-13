@@ -53,15 +53,15 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 	private Phenotype<ItemGene, Integer> addUnusedItems(final Phenotype<ItemGene, Integer> individual,
 			final long generation) {
 		final var knapsack = ((KnapsackChromosome) individual.genotype().chromosome()).getKnapsack();
-		final var newItems = new HashSet<Item>(knapsack.getItems());
+		final var newItems = new HashSet<Item>(knapsack.items());
 
 		SingleObjectiveProblem.ITEMS.stream() //
-				.filter(item -> !knapsack.getItems().contains(item)) // Filter for unused items.
-				.sorted(Comparator.comparing(Item::getProfit).reversed()) // Sort by highest profit.
+				.filter(item -> !knapsack.items().contains(item)) // Filter for unused items.
+				.sorted(Comparator.comparing(Item::profit).reversed()) // Sort by highest profit.
 				.forEach(unusedItem -> {
 					final var newKnapsack = KnapsackFactory.createSO(newItems);
-					final var availableWeight = SingleObjectiveProblem.MAX_CAPACITY - newKnapsack.getWeight();
-					final var unusedItemWeight = unusedItem.getWeight();
+					final var availableWeight = SingleObjectiveProblem.MAX_CAPACITY - newKnapsack.weight();
+					final var unusedItemWeight = unusedItem.weight();
 					if (availableWeight - unusedItemWeight >= 0) {
 						newItems.add(unusedItem);
 					}

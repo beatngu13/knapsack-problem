@@ -37,7 +37,7 @@ public class WeightAndItemsConstraint implements Constraint<ItemGene, Vec<int[]>
 		final var knapsacks = individual.genotype();
 		final var knapsack0 = ((KnapsackChromosome) knapsacks.get(0)).getKnapsack();
 		final var knapsack1 = ((KnapsackChromosome) knapsacks.get(1)).getKnapsack();
-		return Collections.disjoint(knapsack0.getItems(), knapsack1.getItems());
+		return Collections.disjoint(knapsack0.items(), knapsack1.items());
 	}
 
 }
