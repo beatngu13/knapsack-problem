@@ -65,7 +65,7 @@ class MultiObjectiveIT {
 	private static Stream<Knapsack> getKnapsacks(final Phenotype<ItemGene, Vec<int[]>> phenotype) {
 		return phenotype.genotype().stream() //
 				.map(KnapsackChromosome.class::cast) //
-				.map(KnapsackChromosome::getKnapsack);
+				.map(KnapsackChromosome::knapsack);
 	}
 
 }

@@ -8,7 +8,7 @@
 	<version>0.1.0-SNAPSHOT</version>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>14</java.version>
 		<encoding>UTF-8</encoding>
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
@@ -17,11 +17,6 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.12</version>
-		</dependency>
 		<dependency>
 			<groupId>io.jenetics</groupId>
 			<artifactId>jenetics</artifactId>
@@ -32,8 +27,6 @@
 			<artifactId>jenetics.ext</artifactId>
 			<version>${jenetics.version}</version>
 		</dependency>
-
-		<!-- test -->
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -57,6 +50,7 @@
 				<version>3.8.1</version>
 				<configuration>
 					<release>${java.version}</release>
+					<compilerArgs>--enable-preview</compilerArgs>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -70,6 +64,7 @@
 							junit.jupiter.execution.parallel.config.dynamic.factor=1
 						</configurationParameters>
 					</properties>
+					<argLine>--enable-preview</argLine>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -77,11 +72,7 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.22.2</version>
 				<configuration>
-					<!-- combine Surefire and Failsafe reports for SonarCloud (see https://stackoverflow.com/a/15567782) -->
-					<reportsDirectory>${project.build.directory}/surefire-reports/</reportsDirectory>
-					<systemPropertyVariables>
-						<de.retest.recheck.rehub.reportUploadEnabled>true</de.retest.recheck.rehub.reportUploadEnabled>
-					</systemPropertyVariables>
+					<argLine>--enable-preview</argLine>
 				</configuration>
 				<executions>
 					<execution>
@@ -95,33 +86,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>coverage</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.jacoco</groupId>
-						<artifactId>jacoco-maven-plugin</artifactId>
-						<version>0.8.5</version>
-						<executions>
-							<execution>
-								<id>prepare-agent</id>
-								<goals>
-									<goal>prepare-agent</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>report</id>
-								<goals>
-									<goal>report</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>

@@ -49,11 +49,11 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 
 	private Phenotype<ItemGene, Vec<int[]>> addUnusedItems(final Phenotype<ItemGene, Vec<int[]>> individual,
 			final long generation) {
-		final var knapsack0 = ((KnapsackChromosome) individual.genotype().get(0)).getKnapsack();
-		final var knapsack1 = ((KnapsackChromosome) individual.genotype().get(1)).getKnapsack();
+		final var knapsack0 = ((KnapsackChromosome) individual.genotype().get(0)).knapsack();
+		final var knapsack1 = ((KnapsackChromosome) individual.genotype().get(1)).knapsack();
 
-		final var newItems0 = addUnusedItems(knapsack0.getItems(), knapsack1.getItems(), knapsack0);
-		final var newItems1 = addUnusedItems(newItems0, knapsack1.getItems(), knapsack1);
+		final var newItems0 = addUnusedItems(knapsack0.items(), knapsack1.items(), knapsack0);
+		final var newItems1 = addUnusedItems(newItems0, knapsack1.items(), knapsack1);
 
 		final var genotype = Genotype.of(new KnapsackChromosome(KnapsackFactory.createMO0(newItems0)),
 				new KnapsackChromosome(KnapsackFactory.createMO1(newItems1)));
@@ -63,16 +63,16 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 
 	private Set<Item> addUnusedItems(final Set<Item> itemsFromKnapsack0, final Set<Item> itemsFromKnapsack1,
 			final Knapsack knapsack) {
-		final var newItems = new HashSet<>(knapsack.getItems());
+		final var newItems = new HashSet<>(knapsack.items());
 
 		MultiObjectiveProblem.ITEMS.stream() //
 				.filter(item -> !itemsFromKnapsack0.contains(item)) // Filter items from first knapsack.
 				.filter(item -> !itemsFromKnapsack1.contains(item)) // Filter items from second knapsack.
-				.sorted(Comparator.comparing(Item::getProfit).reversed()) // Sort by highest profit.
+				.sorted(Comparator.comparing(Item::profit).reversed()) // Sort by highest profit.
 				.forEach(unusedItem -> {
-					final var newKnapsack = KnapsackFactory.create(newItems, knapsack.getMaxCapacity());
-					final var availableWeight = knapsack.getMaxCapacity() - newKnapsack.getWeight();
-					final var unusedItemWeight = unusedItem.getWeight();
+					final var newKnapsack = KnapsackFactory.create(newItems, knapsack.maxCapacity());
+					final var availableWeight = knapsack.maxCapacity() - newKnapsack.weight();
+					final var unusedItemWeight = unusedItem.weight();
 					if (availableWeight - unusedItemWeight >= 0) {
 						newItems.add(unusedItem);
 					}

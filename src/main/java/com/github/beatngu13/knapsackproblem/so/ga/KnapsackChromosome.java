@@ -7,12 +7,8 @@ import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 
 import io.jenetics.Chromosome;
 import io.jenetics.util.ISeq;
-import lombok.Value;
 
-@Value
-public class KnapsackChromosome implements Chromosome<ItemGene> {
-
-	private final Knapsack knapsack;
+public record KnapsackChromosome(Knapsack knapsack) implements Chromosome<ItemGene> {
 
 	@Override
 	public boolean isValid() {
@@ -34,7 +30,7 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 
 	@Override
 	public ItemGene get(final int index) {
-		return knapsack.getItems().stream() //
+		return knapsack.items().stream() //
 				.map(ItemGene::new) //
 				.collect(Collectors.toList()) //
 				.get(index);
@@ -42,7 +38,7 @@ public class KnapsackChromosome implements Chromosome<ItemGene> {
 
 	@Override
 	public int length() {
-		return knapsack.getItems().size();
+		return knapsack.items().size();
 	}
 
 }

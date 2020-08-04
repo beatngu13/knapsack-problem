@@ -8,7 +8,7 @@ public class ProfitFitness implements Function<Knapsack, Integer> {
 
 	@Override
 	public Integer apply(final Knapsack knapsack) {
-		return knapsack.getProfit();
+		return knapsack.profit();
 	}
 
 }

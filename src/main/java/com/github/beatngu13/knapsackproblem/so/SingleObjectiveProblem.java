@@ -7,14 +7,15 @@ import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.util.ProblemUtil;
 
-import lombok.experimental.UtilityClass;
-
 /**
  * Single-objective knapsack problem based on P07 from <a href=
  * "https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html">https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html</a>.
  */
-@UtilityClass
 public class SingleObjectiveProblem {
+
+	private SingleObjectiveProblem() {
+
+	}
 
 	private static final List<Integer> PROFITS = List.of( //
 			135, 139, 149, 150, 156, //

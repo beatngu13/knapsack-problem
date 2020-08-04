@@ -11,8 +11,8 @@ class KnapsackFactoryTest {
 	@Test
 	void items_should_be_mutually_exclusive() {
 		final var knapsacks = KnapsackFactory.createRandomMO();
-		final var items0 = knapsacks.get(0).getItems();
-		final var items1 = knapsacks.get(1).getItems();
+		final var items0 = knapsacks.get(0).items();
+		final var items1 = knapsacks.get(1).items();
 		assertThat(items0).doesNotContainAnyElementsOf(items1);
 	}
 
@@ -21,10 +21,10 @@ class KnapsackFactoryTest {
 		final var knapsacks = KnapsackFactory.createRandomMO();
 		final var knapsack0 = knapsacks.get(0);
 		final var knapsack1 = knapsacks.get(1);
-		assertThat(knapsack0.getMaxCapacity()).isEqualTo(MultiObjectiveProblem.MAX_CAPACITY_0);
-		assertThat(knapsack0.getWeight()).isLessThanOrEqualTo(knapsack0.getMaxCapacity());
-		assertThat(knapsack1.getMaxCapacity()).isEqualTo(MultiObjectiveProblem.MAX_CAPACITY_1);
-		assertThat(knapsack1.getWeight()).isLessThanOrEqualTo(knapsack1.getMaxCapacity());
+		assertThat(knapsack0.maxCapacity()).isEqualTo(MultiObjectiveProblem.MAX_CAPACITY_0);
+		assertThat(knapsack0.weight()).isLessThanOrEqualTo(knapsack0.maxCapacity());
+		assertThat(knapsack1.maxCapacity()).isEqualTo(MultiObjectiveProblem.MAX_CAPACITY_1);
+		assertThat(knapsack1.weight()).isLessThanOrEqualTo(knapsack1.maxCapacity());
 	}
 
 }

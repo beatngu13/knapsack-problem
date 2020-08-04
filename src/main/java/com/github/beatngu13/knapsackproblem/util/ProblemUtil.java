@@ -9,10 +9,11 @@ import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 
-import lombok.experimental.UtilityClass;
-
-@UtilityClass
 public class ProblemUtil {
+
+	private ProblemUtil() {
+
+	}
 
 	/**
 	 * @param profits The list of profits.

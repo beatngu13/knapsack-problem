@@ -11,10 +11,12 @@ import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
 import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
 
 import io.jenetics.util.RandomRegistry;
-import lombok.experimental.UtilityClass;
 
-@UtilityClass
 public class KnapsackFactory {
+
+	private KnapsackFactory() {
+
+	}
 
 	// GENERIC
 
@@ -104,7 +106,7 @@ public class KnapsackFactory {
 		final var items = new HashSet<Item>();
 		var totalWeight = 0;
 		for (final Item item : remainingItems) {
-			final var itemWeight = item.getWeight();
+			final var itemWeight = item.weight();
 			if (totalWeight + itemWeight <= maxCapacity) {
 				items.add(item);
 				totalWeight += itemWeight;
