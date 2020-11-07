@@ -26,7 +26,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 	private final double probability;
 
 	/**
-	 * @param The altering probability in the range of [0, 1].
+	 * @param probability The altering probability in the range of [0, 1].
 	 */
 	public UnusedItemsMutator(final double probability) {
 		this.probability = probability;
