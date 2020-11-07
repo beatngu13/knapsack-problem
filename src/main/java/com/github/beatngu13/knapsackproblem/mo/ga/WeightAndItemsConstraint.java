@@ -16,16 +16,6 @@ public class WeightAndItemsConstraint implements Constraint<ItemGene, Vec<int[]>
 		return hasWeightWithinMaxCapacity(individual) && hasMutuallyExclusiveItems(individual);
 	}
 
-	@Override
-	public Phenotype<ItemGene, Vec<int[]>> repair(final Phenotype<ItemGene, Vec<int[]>> individual,
-												  final long generation) {
-		final var knapsacks = KnapsackFactory.createRandomMO();
-		final var chromosome0 = new KnapsackChromosome(knapsacks.get(0));
-		final var chromosome1 = new KnapsackChromosome(knapsacks.get(1));
-		final var genotype = Genotype.of(chromosome0, chromosome1);
-		return Phenotype.of(genotype, generation);
-	}
-
 	private boolean hasWeightWithinMaxCapacity(final Phenotype<ItemGene, Vec<int[]>> individual) {
 		return individual.genotype().stream()
 				.map(genotype -> ((KnapsackChromosome) genotype).knapsack())
@@ -37,6 +27,16 @@ public class WeightAndItemsConstraint implements Constraint<ItemGene, Vec<int[]>
 		final var knapsack0 = ((KnapsackChromosome) knapsacks.get(0)).knapsack();
 		final var knapsack1 = ((KnapsackChromosome) knapsacks.get(1)).knapsack();
 		return Collections.disjoint(knapsack0.items(), knapsack1.items());
+	}
+
+	@Override
+	public Phenotype<ItemGene, Vec<int[]>> repair(final Phenotype<ItemGene, Vec<int[]>> individual,
+												  final long generation) {
+		final var knapsacks = KnapsackFactory.createRandomMO();
+		final var chromosome0 = new KnapsackChromosome(knapsacks.get(0));
+		final var chromosome1 = new KnapsackChromosome(knapsacks.get(1));
+		final var genotype = Genotype.of(chromosome0, chromosome1);
+		return Phenotype.of(genotype, 0);
 	}
 
 }

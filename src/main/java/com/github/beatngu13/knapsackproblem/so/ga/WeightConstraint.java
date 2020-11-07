@@ -14,7 +14,7 @@ public class WeightConstraint implements Constraint<ItemGene, Integer> {
 	@Override
 	public Phenotype<ItemGene, Integer> repair(final Phenotype<ItemGene, Integer> individual, final long generation) {
 		// No repair like Constraint#of(Predicate).
-		return Phenotype.of(individual.genotype().newInstance(), generation);
+		return Phenotype.of(individual.genotype().newInstance(), 0);
 	}
 
 }
