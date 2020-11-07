@@ -1,22 +1,20 @@
 package com.github.beatngu13.knapsackproblem.so.ga;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.github.beatngu13.knapsackproblem.base.Item;
+import com.github.beatngu13.knapsackproblem.base.Knapsack;
+import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
+import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
+import io.jenetics.Genotype;
+import io.jenetics.Phenotype;
+import io.jenetics.util.Seq;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import com.github.beatngu13.knapsackproblem.base.Item;
-import com.github.beatngu13.knapsackproblem.base.Knapsack;
-import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
-import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
-
-import io.jenetics.Genotype;
-import io.jenetics.Phenotype;
-import io.jenetics.util.Seq;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class UnusedItemsMutatorTest {
 

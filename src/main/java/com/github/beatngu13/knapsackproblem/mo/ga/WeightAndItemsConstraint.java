@@ -1,14 +1,13 @@
 package com.github.beatngu13.knapsackproblem.mo.ga;
 
-import java.util.Collections;
-
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
-
 import io.jenetics.Genotype;
 import io.jenetics.Phenotype;
 import io.jenetics.engine.Constraint;
 import io.jenetics.ext.moea.Vec;
+
+import java.util.Collections;
 
 public class WeightAndItemsConstraint implements Constraint<ItemGene, Vec<int[]>> {
 
@@ -19,7 +18,7 @@ public class WeightAndItemsConstraint implements Constraint<ItemGene, Vec<int[]>
 
 	@Override
 	public Phenotype<ItemGene, Vec<int[]>> repair(final Phenotype<ItemGene, Vec<int[]>> individual,
-			final long generation) {
+												  final long generation) {
 		final var knapsacks = KnapsackFactory.createRandomMO();
 		final var chromosome0 = new KnapsackChromosome(knapsacks.get(0));
 		final var chromosome1 = new KnapsackChromosome(knapsacks.get(1));
@@ -28,8 +27,8 @@ public class WeightAndItemsConstraint implements Constraint<ItemGene, Vec<int[]>
 	}
 
 	private boolean hasWeightWithinMaxCapacity(final Phenotype<ItemGene, Vec<int[]>> individual) {
-		return individual.genotype().stream() //
-				.map(genotype -> ((KnapsackChromosome) genotype).knapsack()) //
+		return individual.genotype().stream()
+				.map(genotype -> ((KnapsackChromosome) genotype).knapsack())
 				.allMatch(Knapsack::isWithinMaxCapacity);
 	}
 

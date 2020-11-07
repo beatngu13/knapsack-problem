@@ -1,10 +1,9 @@
 package com.github.beatngu13.knapsackproblem.base;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
+import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
 import org.junit.jupiter.api.Test;
 
-import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class KnapsackFactoryTest {
 

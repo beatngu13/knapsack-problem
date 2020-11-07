@@ -1,11 +1,11 @@
 package com.github.beatngu13.knapsackproblem.mo;
 
-import java.util.Collections;
-import java.util.List;
-
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.util.ProblemUtil;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Multi-objective knapsack problem based on P06 from <a href=
@@ -17,12 +17,12 @@ public class MultiObjectiveProblem {
 
 	}
 
-	private static final List<Integer> PROFITS = List.of( //
-			78, 35, 89, 36, 94, //
+	private static final List<Integer> PROFITS = List.of(
+			78, 35, 89, 36, 94,
 			75, 74, 79, 80, 16);
 
-	private static final List<Integer> WEIGHTS = List.of( //
-			18, 9, 23, 20, 59, //
+	private static final List<Integer> WEIGHTS = List.of(
+			18, 9, 23, 20, 59,
 			61, 70, 75, 76, 30);
 
 	private static final String OPTIMAL_SOLUTION_0 = "1010010000";

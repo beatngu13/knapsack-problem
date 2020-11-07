@@ -1,15 +1,9 @@
 package com.github.beatngu13.knapsackproblem.mo.ga;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
-
 import io.jenetics.Alterer;
 import io.jenetics.AltererResult;
 import io.jenetics.Genotype;
@@ -18,6 +12,11 @@ import io.jenetics.ext.moea.Vec;
 import io.jenetics.util.ISeq;
 import io.jenetics.util.RandomRegistry;
 import io.jenetics.util.Seq;
+
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Mutates two knapsacks by adding unused items.
@@ -38,17 +37,17 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 
 	@Override
 	public AltererResult<ItemGene, Vec<int[]>> alter(final Seq<Phenotype<ItemGene, Vec<int[]>>> population,
-			final long generation) {
+													 final long generation) {
 		final var random = RandomRegistry.random();
-		return population.stream() //
-				.map(individual -> random.nextInt(100) <= probability * 100 //
-						? addUnusedItems(individual, generation) //
-						: individual) //
+		return population.stream()
+				.map(individual -> random.nextInt(100) <= probability * 100
+						? addUnusedItems(individual, generation)
+						: individual)
 				.collect(Collectors.collectingAndThen(ISeq.toISeq(), AltererResult::of));
 	}
 
 	private Phenotype<ItemGene, Vec<int[]>> addUnusedItems(final Phenotype<ItemGene, Vec<int[]>> individual,
-			final long generation) {
+														   final long generation) {
 		final var knapsack0 = ((KnapsackChromosome) individual.genotype().get(0)).knapsack();
 		final var knapsack1 = ((KnapsackChromosome) individual.genotype().get(1)).knapsack();
 
@@ -62,10 +61,10 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 	}
 
 	private Set<Item> addUnusedItems(final Set<Item> itemsFromKnapsack0, final Set<Item> itemsFromKnapsack1,
-			final Knapsack knapsack) {
+									 final Knapsack knapsack) {
 		final var newItems = new HashSet<>(knapsack.items());
 
-		MultiObjectiveProblem.ITEMS.stream() //
+		MultiObjectiveProblem.ITEMS.stream()
 				.filter(item -> !itemsFromKnapsack0.contains(item)) // Filter items from first knapsack.
 				.filter(item -> !itemsFromKnapsack1.contains(item)) // Filter items from second knapsack.
 				.sorted(Comparator.comparing(Item::profit).reversed()) // Sort by highest profit.

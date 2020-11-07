@@ -1,13 +1,12 @@
 package com.github.beatngu13.knapsackproblem.so.ga;
 
-import java.util.function.Function;
-
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
-
 import io.jenetics.Genotype;
 import io.jenetics.engine.Codec;
 import io.jenetics.util.Factory;
+
+import java.util.function.Function;
 
 public class KnapsackCodec implements Codec<Knapsack, ItemGene> {
 

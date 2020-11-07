@@ -1,16 +1,15 @@
 package com.github.beatngu13.knapsackproblem.base;
 
+import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
+import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
+import io.jenetics.util.RandomRegistry;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
-import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
-
-import io.jenetics.util.RandomRegistry;
 
 public class KnapsackFactory {
 
@@ -34,7 +33,7 @@ public class KnapsackFactory {
 	/**
 	 * @param items The set of items.
 	 * @return A new knapsack with the given set of items and a maximum capacity of
-	 *         {@link SingleObjectiveProblem#MAX_CAPACITY}.
+	 * {@link SingleObjectiveProblem#MAX_CAPACITY}.
 	 */
 	public static Knapsack createSO(final Set<Item> items) {
 		return create(items, SingleObjectiveProblem.MAX_CAPACITY);
@@ -42,13 +41,13 @@ public class KnapsackFactory {
 
 	/**
 	 * @return A new knapsack with random items from
-	 *         {@link SingleObjectiveProblem#ITEMS} and a maximum capacity of
-	 *         {@link SingleObjectiveProblem#MAX_CAPACITY}.
+	 * {@link SingleObjectiveProblem#ITEMS} and a maximum capacity of
+	 * {@link SingleObjectiveProblem#MAX_CAPACITY}.
 	 */
 	public static Knapsack createRandomSO() {
 		final var random = RandomRegistry.random();
-		final var items = SingleObjectiveProblem.ITEMS.stream() //
-				.filter(item -> random.nextBoolean()) //
+		final var items = SingleObjectiveProblem.ITEMS.stream()
+				.filter(item -> random.nextBoolean())
 				.collect(Collectors.toSet());
 		final var knapsack = createSO(items);
 		return knapsack.isWithinMaxCapacity() ? knapsack : createRandomSO();
@@ -59,7 +58,7 @@ public class KnapsackFactory {
 	/**
 	 * @param items The set of items.
 	 * @return A new knapsack with the given set of items and a maximum capacity of
-	 *         {@link MultiObjectiveProblem#MAX_CAPACITY_0}.
+	 * {@link MultiObjectiveProblem#MAX_CAPACITY_0}.
 	 */
 	public static Knapsack createMO0(final Set<Item> items) {
 		return create(items, MultiObjectiveProblem.MAX_CAPACITY_0);
@@ -68,7 +67,7 @@ public class KnapsackFactory {
 	/**
 	 * @param items The set of items.
 	 * @return A new knapsack with the given set of items and a maximum capacity of
-	 *         {@link MultiObjectiveProblem#MAX_CAPACITY_1}.
+	 * {@link MultiObjectiveProblem#MAX_CAPACITY_1}.
 	 */
 	public static Knapsack createMO1(final Set<Item> items) {
 		return create(items, MultiObjectiveProblem.MAX_CAPACITY_1);
@@ -76,12 +75,12 @@ public class KnapsackFactory {
 
 	/**
 	 * @return A new knapsack with random items from
-	 *         {@link MultiObjectiveProblem#ITEMS} and the given maximum capacity.
+	 * {@link MultiObjectiveProblem#ITEMS} and the given maximum capacity.
 	 */
 	public static Knapsack createRandomMO(final int maxCapacity) {
 		final var random = RandomRegistry.random();
-		final var items = MultiObjectiveProblem.ITEMS.stream() //
-				.filter(item -> random.nextBoolean()) //
+		final var items = MultiObjectiveProblem.ITEMS.stream()
+				.filter(item -> random.nextBoolean())
 				.collect(Collectors.toSet());
 		final var knapsack = create(items, maxCapacity);
 		return knapsack.isWithinMaxCapacity() ? knapsack : createRandomMO(maxCapacity);
@@ -89,9 +88,9 @@ public class KnapsackFactory {
 
 	/**
 	 * @return A list of new knapsacks with random, mutually exclusive items from
-	 *         {@link MultiObjectiveProblem#ITEMS} and a maximum capacity of
-	 *         {@link MultiObjectiveProblem#MAX_CAPACITY_0} for the first and
-	 *         {@link MultiObjectiveProblem#MAX_CAPACITY_1} for the second knapsack.
+	 * {@link MultiObjectiveProblem#ITEMS} and a maximum capacity of
+	 * {@link MultiObjectiveProblem#MAX_CAPACITY_0} for the first and
+	 * {@link MultiObjectiveProblem#MAX_CAPACITY_1} for the second knapsack.
 	 */
 	public static List<Knapsack> createRandomMO() {
 		final List<Item> remainingItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
