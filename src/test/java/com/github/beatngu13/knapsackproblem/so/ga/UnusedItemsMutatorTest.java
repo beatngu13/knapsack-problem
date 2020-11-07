@@ -1,6 +1,5 @@
 package com.github.beatngu13.knapsackproblem.so.ga;
 
-import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
@@ -51,7 +50,7 @@ class UnusedItemsMutatorTest {
 		final var knapsacks = toKnapsackList(result.population());
 		// Previously unused items, sorted by profit.
 		final var expected = KnapsackFactory.createSO(
-				new HashSet<Item>(SingleObjectiveProblem.ITEMS.subList(9, SingleObjectiveProblem.ITEMS.size())));
+				new HashSet<>(SingleObjectiveProblem.ITEMS.subList(9, SingleObjectiveProblem.ITEMS.size())));
 		assertThat(knapsacks).size().isOne();
 		assertThat(knapsacks).first().isEqualTo(expected);
 	}
