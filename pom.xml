@@ -8,7 +8,7 @@
 	<version>0.1.0-SNAPSHOT</version>
 
 	<properties>
-		<java.version>14</java.version>
+		<java.version>15</java.version>
 		<encoding>UTF-8</encoding>
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
