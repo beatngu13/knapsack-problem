@@ -20,4 +20,4 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}-${{ secrets.CACHE_VERSION }}
 
       - name: Build with Maven
-        run: mvn verify --batch-mode
+        run: mvn verify -B
