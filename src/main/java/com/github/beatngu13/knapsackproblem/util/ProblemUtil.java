@@ -23,7 +23,7 @@ public class ProblemUtil {
 	public static List<Item> getItems(final List<Integer> profits, final List<Integer> weights) {
 		return IntStream.range(0, profits.size())
 				.mapToObj(i -> new Item(i, profits.get(i), weights.get(i)))
-				.collect(Collectors.toList());
+				.toList();
 	}
 
 	/**

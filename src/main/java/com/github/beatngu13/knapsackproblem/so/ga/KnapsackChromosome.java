@@ -31,7 +31,7 @@ public record KnapsackChromosome(Knapsack knapsack) implements Chromosome<ItemGe
 	public ItemGene get(final int index) {
 		return knapsack.items().stream()
 				.map(ItemGene::new)
-				.collect(Collectors.toList())
+				.toList()
 				.get(index);
 	}
 
