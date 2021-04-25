@@ -2,10 +2,9 @@ package com.github.beatngu13.knapsackproblem.mo.ga;
 
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
+import com.github.beatngu13.knapsackproblem.util.Items;
 import io.jenetics.Chromosome;
 import io.jenetics.util.ISeq;
-
-import java.util.stream.Collectors;
 
 public record KnapsackChromosome(Knapsack knapsack) implements Chromosome<ItemGene> {
 
@@ -23,7 +22,7 @@ public record KnapsackChromosome(Knapsack knapsack) implements Chromosome<ItemGe
 	public Chromosome<ItemGene> newInstance(final ISeq<ItemGene> genes) {
 		final var items = genes.stream()
 				.map(ItemGene::allele)
-				.collect(Collectors.toSet());
+				.collect(Items.collector());
 		return new KnapsackChromosome(KnapsackFactory.create(items, knapsack.maxCapacity()));
 	}
 

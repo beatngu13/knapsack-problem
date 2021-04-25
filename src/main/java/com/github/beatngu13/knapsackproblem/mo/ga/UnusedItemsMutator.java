@@ -4,6 +4,7 @@ import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
+import com.github.beatngu13.knapsackproblem.util.Items;
 import io.jenetics.Alterer;
 import io.jenetics.AltererResult;
 import io.jenetics.Genotype;
@@ -14,7 +15,6 @@ import io.jenetics.util.RandomRegistry;
 import io.jenetics.util.Seq;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -66,7 +66,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 
 	private Set<Item> addUnusedItems(final Set<Item> itemsFromKnapsack0, final Set<Item> itemsFromKnapsack1,
 									 final Knapsack knapsack) {
-		final var newItems = new HashSet<>(knapsack.items());
+		final var newItems = Items.set(knapsack.items());
 
 		MultiObjectiveProblem.ITEMS.stream()
 				.filter(item -> !itemsFromKnapsack0.contains(item)) // Filter items from first knapsack.

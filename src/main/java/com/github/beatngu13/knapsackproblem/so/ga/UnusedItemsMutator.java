@@ -3,6 +3,7 @@ package com.github.beatngu13.knapsackproblem.so.ga;
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
+import com.github.beatngu13.knapsackproblem.util.Items;
 import io.jenetics.Alterer;
 import io.jenetics.AltererResult;
 import io.jenetics.Genotype;
@@ -12,7 +13,6 @@ import io.jenetics.util.RandomRegistry;
 import io.jenetics.util.Seq;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.stream.Collectors;
 
 /**
@@ -52,7 +52,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 	private Phenotype<ItemGene, Integer> addUnusedItems(final Phenotype<ItemGene, Integer> individual,
 														final long generation) {
 		final var knapsack = ((KnapsackChromosome) individual.genotype().chromosome()).knapsack();
-		final var newItems = new HashSet<>(knapsack.items());
+		final var newItems = Items.set(knapsack.items());
 
 		SingleObjectiveProblem.ITEMS.stream()
 				.filter(item -> !knapsack.items().contains(item)) // Filter for unused items.

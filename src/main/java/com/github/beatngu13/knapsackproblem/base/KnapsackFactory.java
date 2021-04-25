@@ -2,14 +2,13 @@ package com.github.beatngu13.knapsackproblem.base;
 
 import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
 import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
+import com.github.beatngu13.knapsackproblem.util.Items;
 import io.jenetics.util.RandomRegistry;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class KnapsackFactory {
 
@@ -48,7 +47,7 @@ public class KnapsackFactory {
 		final var random = RandomRegistry.random();
 		final var items = SingleObjectiveProblem.ITEMS.stream()
 				.filter(item -> random.nextBoolean())
-				.collect(Collectors.toSet());
+				.collect(Items.collector());
 		final var knapsack = createSO(items);
 		return knapsack.isWithinMaxCapacity() ? knapsack : createRandomSO();
 	}
@@ -81,7 +80,7 @@ public class KnapsackFactory {
 		final var random = RandomRegistry.random();
 		final var items = MultiObjectiveProblem.ITEMS.stream()
 				.filter(item -> random.nextBoolean())
-				.collect(Collectors.toSet());
+				.collect(Items.collector());
 		final var knapsack = create(items, maxCapacity);
 		return knapsack.isWithinMaxCapacity() ? knapsack : createRandomMO(maxCapacity);
 	}
@@ -102,7 +101,7 @@ public class KnapsackFactory {
 	}
 
 	private static Set<Item> takeWhileWithinMaxCapacity(final List<Item> remainingItems, final int maxCapacity) {
-		final var items = new HashSet<Item>();
+		final var items = Items.set();
 		var totalWeight = 0;
 		for (final Item item : remainingItems) {
 			final var itemWeight = item.weight();
