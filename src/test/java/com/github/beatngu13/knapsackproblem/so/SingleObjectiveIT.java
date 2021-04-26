@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SingleObjectiveIT {
 
 	@Test
-	void should_find_optimal_solution() throws Exception {
+	void should_find_optimal_solution() {
 		final var knapsackEngine = Engine.builder(new ProfitFitness(), new KnapsackCodec())
 				.executor(Runnable::run) // Single-threaded for reproducibility.
 				.alterers(new SinglePointCrossover<>(0.2), new Mutator<>(0.15), new UnusedItemsMutator(0.3))

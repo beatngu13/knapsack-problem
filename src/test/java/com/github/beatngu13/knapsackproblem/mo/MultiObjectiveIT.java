@@ -31,7 +31,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MultiObjectiveIT {
 
 	@Test
-	void should_find_optimal_solution() throws Exception {
+	void should_find_optimal_solution() {
 		final var knapsackEngine = Engine.builder(new ProfitFitness(), new KnapsackCodec())
 				.executor(Runnable::run) // Single-threaded for reproducibility.
 				.selector(NSGA2Selector.ofVec())

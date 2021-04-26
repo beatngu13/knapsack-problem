@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class UnusedItemsMutatorTest {
 
 	@Test
-	void should_not_mutate_when_probability_is_zero() throws Exception {
+	void should_not_mutate_when_probability_is_zero() {
 		final var knapsack = KnapsackFactory.createSO(Collections.emptySet());
 		final var cut = new UnusedItemsMutator(0.0);
 
@@ -30,7 +30,7 @@ class UnusedItemsMutatorTest {
 	}
 
 	@Test
-	void should_not_mutate_knapsack_without_available_weight() throws Exception {
+	void should_not_mutate_knapsack_without_available_weight() {
 		final var cut = new UnusedItemsMutator(1.0);
 
 		final var result = cut.alter(toPhenotypeSeq(SingleObjectiveProblem.OPTIMAL_KNAPSACK), 1L);
@@ -41,7 +41,7 @@ class UnusedItemsMutatorTest {
 	}
 
 	@Test
-	void should_mutate_knapsack_with_available_weight() throws Exception {
+	void should_mutate_knapsack_with_available_weight() {
 		final var knapsack = KnapsackFactory.createSO(Collections.emptySet());
 		final var cut = new UnusedItemsMutator(1.0);
 
