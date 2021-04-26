@@ -72,7 +72,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 
 		MultiObjectiveProblem.ITEMS.stream()
 				.filter(not(itemsFromKnapsack0::contains)) // Filter items from first knapsack.
-				.filter(not(itemsFromKnapsack1::contains))  // Filter items from second knapsack.
+				.filter(not(itemsFromKnapsack1::contains)) // Filter items from second knapsack.
 				.sorted(Comparator.comparing(Item::profit).reversed()) // Sort by highest profit.
 				.forEach(unusedItem -> {
 					final var newKnapsack = KnapsackFactory.create(newItems, knapsack.maxCapacity());
