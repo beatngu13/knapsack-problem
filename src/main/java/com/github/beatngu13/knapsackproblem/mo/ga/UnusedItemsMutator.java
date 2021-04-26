@@ -18,6 +18,8 @@ import java.util.Comparator;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static java.util.function.Predicate.not;
+
 /**
  * Mutates two knapsacks by adding unused items.
  */
@@ -69,8 +71,8 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 		final var newItems = Items.set(knapsack.items());
 
 		MultiObjectiveProblem.ITEMS.stream()
-				.filter(item -> !itemsFromKnapsack0.contains(item)) // Filter items from first knapsack.
-				.filter(item -> !itemsFromKnapsack1.contains(item)) // Filter items from second knapsack.
+				.filter(not(itemsFromKnapsack0::contains)) // Filter items from first knapsack.
+				.filter(not(itemsFromKnapsack1::contains))  // Filter items from second knapsack.
 				.sorted(Comparator.comparing(Item::profit).reversed()) // Sort by highest profit.
 				.forEach(unusedItem -> {
 					final var newKnapsack = KnapsackFactory.create(newItems, knapsack.maxCapacity());

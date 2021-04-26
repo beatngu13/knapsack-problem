@@ -15,6 +15,8 @@ import io.jenetics.util.Seq;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
+import static java.util.function.Predicate.not;
+
 /**
  * Mutates a knapsack by adding unused items.
  */
@@ -51,11 +53,11 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 	 */
 	private Phenotype<ItemGene, Integer> addUnusedItems(final Phenotype<ItemGene, Integer> individual,
 														final long generation) {
-		final var knapsack = ((KnapsackChromosome) individual.genotype().chromosome()).knapsack();
-		final var newItems = Items.set(knapsack.items());
+		final var items = ((KnapsackChromosome) individual.genotype().chromosome()).knapsack().items();
+		final var newItems = Items.set(items);
 
 		SingleObjectiveProblem.ITEMS.stream()
-				.filter(item -> !knapsack.items().contains(item)) // Filter for unused items.
+				.filter(not(items::contains)) // Filter for unused items.
 				.sorted(Comparator.comparing(Item::profit).reversed()) // Sort by highest profit.
 				.forEach(unusedItem -> {
 					final var newKnapsack = KnapsackFactory.createSO(newItems);
