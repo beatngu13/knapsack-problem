@@ -5,7 +5,7 @@ import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -36,10 +36,14 @@ public final class ProblemUtil {
 	public static Knapsack getOptimalKnapsack(final String optimalSolution, final List<Item> items,
 											  final int maxCapacity) {
 		return IntStream.range(0, optimalSolution.length())
-				.mapToObj(i -> optimalSolution.charAt(i) == '1' ? items.get(i) : null)
-				.filter(Objects::nonNull)
+				.mapToObj(i -> getItem(i, optimalSolution, items))
+				.flatMap(Optional::stream)
 				.collect(Collectors.collectingAndThen(Items.collector(),
 						optimalItems -> KnapsackFactory.create(optimalItems, maxCapacity)));
+	}
+
+	private static Optional<Item> getItem(final int i, final String optimalSolution, final List<Item> items) {
+		return optimalSolution.charAt(i) == '1' ? Optional.of(items.get(i)) : Optional.empty();
 	}
 
 }
