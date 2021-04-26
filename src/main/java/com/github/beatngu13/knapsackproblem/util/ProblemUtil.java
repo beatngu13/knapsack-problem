@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class ProblemUtil {
+public final class ProblemUtil {
 
 	private ProblemUtil() {
 

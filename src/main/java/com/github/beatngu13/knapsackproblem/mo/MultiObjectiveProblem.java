@@ -11,7 +11,7 @@ import java.util.List;
  * Multi-objective knapsack problem based on P06 from <a href=
  * "https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html">https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html</a>.
  */
-public class MultiObjectiveProblem {
+public final class MultiObjectiveProblem {
 
 	private MultiObjectiveProblem() {
 

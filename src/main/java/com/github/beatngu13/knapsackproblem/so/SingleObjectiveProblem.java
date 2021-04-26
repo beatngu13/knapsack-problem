@@ -11,7 +11,7 @@ import java.util.List;
  * Single-objective knapsack problem based on P07 from <a href=
  * "https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html">https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html</a>.
  */
-public class SingleObjectiveProblem {
+public final class SingleObjectiveProblem {
 
 	private SingleObjectiveProblem() {
 

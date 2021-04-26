@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  * (e.g. because of {@link com.github.beatngu13.knapsackproblem.mo.ga.KnapsackChromosome#get(int)}). This class provides
  * utility methods to retrieve sets that fulfill this requirement.
  */
-public class Items {
+public final class Items {
 
 	private Items() {
 
