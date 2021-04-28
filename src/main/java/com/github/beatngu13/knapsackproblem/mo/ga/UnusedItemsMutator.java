@@ -50,8 +50,12 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 
 	private Phenotype<ItemGene, Vec<int[]>> addUnusedItems(final Phenotype<ItemGene, Vec<int[]>> individual,
 														   final long generation) {
-		final var knapsack0 = ((KnapsackChromosome) individual.genotype().get(0)).knapsack();
-		final var knapsack1 = ((KnapsackChromosome) individual.genotype().get(1)).knapsack();
+		final var knapsack0 = individual.genotype().get(0)
+				.as(KnapsackChromosome.class)
+				.knapsack();
+		final var knapsack1 = individual.genotype().get(1)
+				.as(KnapsackChromosome.class)
+				.knapsack();
 
 		final var newItems0 = addUnusedItems(knapsack0.items(), knapsack1.items(), knapsack0);
 		final var newItems1 = addUnusedItems(newItems0, knapsack1.items(), knapsack1);

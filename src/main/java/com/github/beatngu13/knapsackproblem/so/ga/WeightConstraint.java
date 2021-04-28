@@ -7,8 +7,11 @@ public class WeightConstraint implements Constraint<ItemGene, Integer> {
 
 	@Override
 	public boolean test(final Phenotype<ItemGene, Integer> individual) {
-		final var knapsack = ((KnapsackChromosome) individual.genotype().chromosome()).knapsack();
-		return knapsack.isWithinMaxCapacity();
+		return individual.genotype()
+				.chromosome()
+				.as(KnapsackChromosome.class)
+				.knapsack()
+				.isWithinMaxCapacity();
 	}
 
 	@Override

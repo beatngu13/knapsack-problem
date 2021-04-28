@@ -25,8 +25,12 @@ public class WeightAndItemsConstraint implements Constraint<ItemGene, Vec<int[]>
 
 	private boolean hasMutuallyExclusiveItems(final Phenotype<ItemGene, Vec<int[]>> individual) {
 		final var knapsacks = individual.genotype();
-		final var knapsack0 = ((KnapsackChromosome) knapsacks.get(0)).knapsack();
-		final var knapsack1 = ((KnapsackChromosome) knapsacks.get(1)).knapsack();
+		final var knapsack0 = knapsacks.get(0)
+				.as(KnapsackChromosome.class)
+				.knapsack();
+		final var knapsack1 = knapsacks.get(1)
+				.as(KnapsackChromosome.class)
+				.knapsack();
 		return Collections.disjoint(knapsack0.items(), knapsack1.items());
 	}
 
