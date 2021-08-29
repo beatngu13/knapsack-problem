@@ -1,7 +1,7 @@
 package com.github.beatngu13.knapsackproblem.base;
 
 /**
- * A knapsack item, consisting of a unique ID, a profit and a weight.
+ * A knapsack item, consisting of a profit and a weight.
  *
  * @implNote Items are unique, therefore, {@link #equals(Object)} and {@link #hashCode()} are based on identity.
  */
