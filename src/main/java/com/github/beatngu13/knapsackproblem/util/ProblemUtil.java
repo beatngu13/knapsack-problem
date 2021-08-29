@@ -22,7 +22,7 @@ public final class ProblemUtil {
 	 */
 	public static List<Item> getItems(final List<Integer> profits, final List<Integer> weights) {
 		return IntStream.range(0, profits.size())
-				.mapToObj(i -> new Item(profits.get(i), weights.get(i)))
+				.mapToObj(index -> new Item(profits.get(index), weights.get(index)))
 				.toList();
 	}
 
@@ -36,14 +36,16 @@ public final class ProblemUtil {
 	public static Knapsack getOptimalKnapsack(final String optimalSolution, final List<Item> items,
 											  final int maxCapacity) {
 		return IntStream.range(0, optimalSolution.length())
-				.mapToObj(i -> getItem(i, optimalSolution, items))
+				.mapToObj(index -> getOptimalItemAt(index, optimalSolution, items))
 				.flatMap(Optional::stream)
 				.collect(Collectors.collectingAndThen(Items.collector(),
 						optimalItems -> KnapsackFactory.create(optimalItems, maxCapacity)));
 	}
 
-	private static Optional<Item> getItem(final int i, final String optimalSolution, final List<Item> items) {
-		return optimalSolution.charAt(i) == '1' ? Optional.of(items.get(i)) : Optional.empty();
+	private static Optional<Item> getOptimalItemAt(final int index, final String optimalSolution, final List<Item> items) {
+		return optimalSolution.charAt(index) == '1'
+				? Optional.of(items.get(index))
+				: Optional.empty();
 	}
 
 }
