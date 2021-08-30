@@ -5,6 +5,7 @@ pull_request_rules:
       - "-draft"
       - "#approved-reviews-by=0"
       - "#changes-requested-reviews-by=0"
+      - "check-success=build"
     actions:
       rebase: { }
 
@@ -14,6 +15,7 @@ pull_request_rules:
       - "-draft"
       - "#approved-reviews-by>=1"
       - "#changes-requested-reviews-by=0"
+      - "check-success=build"
     actions:
       merge:
         strict: true
@@ -26,6 +28,7 @@ pull_request_rules:
       - "-draft"
       - "#approved-reviews-by>=1"
       - "#changes-requested-reviews-by=0"
+      - "check-success=build"
     actions:
       merge:
         strict: true
