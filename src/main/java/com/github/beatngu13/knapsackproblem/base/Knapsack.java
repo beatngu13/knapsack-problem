@@ -36,9 +36,4 @@ public record Knapsack(Set<Item> items, int maxCapacity) {
 		return weight() <= maxCapacity;
 	}
 
-	@Override
-	public String toString() {
-		return "Knapsack[profit=" + profit() + ", weight=" + weight() + ", maxCapacity=" + maxCapacity() + "]";
-	}
-
 }
