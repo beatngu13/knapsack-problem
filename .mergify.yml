@@ -1,15 +1,20 @@
+queue_rules:
+  - name: default
+    conditions:
+      - "check-success=build"
+
 pull_request_rules:
-  - name: "Merge strict with rebase if Dependabot"
+  - name: merge_dependabot
     conditions:
       - "author=dependabot[bot]"
       - "check-success=build"
     actions:
-      merge:
-        strict: true
-        strict_method: rebase
-        method: merge
+      queue:
+        name: default
+        method: rebase
+        rebase_fallback: none
 
-  - name: "Delete if merged"
+  - name: delete_merged
     conditions:
       - merged
     actions:
