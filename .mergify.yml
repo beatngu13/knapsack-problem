@@ -11,8 +11,7 @@ pull_request_rules:
     actions:
       queue:
         name: default
-        method: rebase
-        rebase_fallback: none
+        update_method: rebase
 
   - name: delete_merged
     conditions:
