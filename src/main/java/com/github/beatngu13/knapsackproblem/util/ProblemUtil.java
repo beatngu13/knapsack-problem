@@ -1,6 +1,7 @@
 package com.github.beatngu13.knapsackproblem.util;
 
 import com.github.beatngu13.knapsackproblem.base.Item;
+import com.github.beatngu13.knapsackproblem.base.Items;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 

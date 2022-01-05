@@ -1,9 +1,9 @@
 package com.github.beatngu13.knapsackproblem.so.ga;
 
 import com.github.beatngu13.knapsackproblem.base.Item;
+import com.github.beatngu13.knapsackproblem.base.Items;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
-import com.github.beatngu13.knapsackproblem.util.Items;
 import io.jenetics.Alterer;
 import io.jenetics.AltererResult;
 import io.jenetics.Genotype;

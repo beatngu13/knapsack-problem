@@ -1,9 +1,9 @@
 package com.github.beatngu13.knapsackproblem.so.ga;
 
+import com.github.beatngu13.knapsackproblem.base.Items;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
-import com.github.beatngu13.knapsackproblem.util.Items;
 import io.jenetics.Genotype;
 import io.jenetics.Phenotype;
 import io.jenetics.util.Seq;

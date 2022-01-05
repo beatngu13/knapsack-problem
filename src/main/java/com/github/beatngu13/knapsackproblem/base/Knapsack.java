@@ -1,7 +1,5 @@
 package com.github.beatngu13.knapsackproblem.base;
 
-import com.github.beatngu13.knapsackproblem.util.Items;
-
 /**
  * A knapsack, consisting of a set of {@link Item}s and a maximum capacity.
  *

@@ -1,6 +1,4 @@
-package com.github.beatngu13.knapsackproblem.util;
-
-import com.github.beatngu13.knapsackproblem.base.Item;
+package com.github.beatngu13.knapsackproblem.base;
 
 import java.io.Serial;
 import java.util.Collection;

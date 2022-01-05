@@ -2,7 +2,6 @@ package com.github.beatngu13.knapsackproblem.base;
 
 import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
 import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
-import com.github.beatngu13.knapsackproblem.util.Items;
 import io.jenetics.util.RandomRegistry;
 
 import java.util.ArrayList;

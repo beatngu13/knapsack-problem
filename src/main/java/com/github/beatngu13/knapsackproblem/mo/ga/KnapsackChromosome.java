@@ -1,8 +1,8 @@
 package com.github.beatngu13.knapsackproblem.mo.ga;
 
+import com.github.beatngu13.knapsackproblem.base.Items;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
 import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
-import com.github.beatngu13.knapsackproblem.util.Items;
 import io.jenetics.Chromosome;
 import io.jenetics.util.ISeq;
 
