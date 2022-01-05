@@ -8,7 +8,7 @@ import io.jenetics.util.RandomRegistry;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 public class KnapsackFactory {
 
@@ -23,7 +23,7 @@ public class KnapsackFactory {
 	 * @param maxCapacity The maximum capacity.
 	 * @return A new knapsack with the given set of items and maximum capacity.
 	 */
-	public static Knapsack create(final Set<Item> items, final int maxCapacity) {
+	public static Knapsack create(final Items items, final int maxCapacity) {
 		return new Knapsack(items, maxCapacity);
 	}
 
@@ -34,7 +34,7 @@ public class KnapsackFactory {
 	 * @return A new knapsack with the given set of items and a maximum capacity of
 	 * {@link SingleObjectiveProblem#MAX_CAPACITY}.
 	 */
-	public static Knapsack createSO(final Set<Item> items) {
+	public static Knapsack createSO(final Items items) {
 		return create(items, SingleObjectiveProblem.MAX_CAPACITY);
 	}
 
@@ -47,7 +47,7 @@ public class KnapsackFactory {
 		final var random = RandomRegistry.random();
 		final var items = SingleObjectiveProblem.ITEMS.stream()
 				.filter(item -> random.nextBoolean())
-				.collect(Items.collector());
+				.collect(Collectors.toCollection(Items::new));
 		final var knapsack = createSO(items);
 		return knapsack.isWithinMaxCapacity() ? knapsack : createRandomSO();
 	}
@@ -59,7 +59,7 @@ public class KnapsackFactory {
 	 * @return A new knapsack with the given set of items and a maximum capacity of
 	 * {@link MultiObjectiveProblem#MAX_CAPACITY_0}.
 	 */
-	public static Knapsack createMO0(final Set<Item> items) {
+	public static Knapsack createMO0(final Items items) {
 		return create(items, MultiObjectiveProblem.MAX_CAPACITY_0);
 	}
 
@@ -68,7 +68,7 @@ public class KnapsackFactory {
 	 * @return A new knapsack with the given set of items and a maximum capacity of
 	 * {@link MultiObjectiveProblem#MAX_CAPACITY_1}.
 	 */
-	public static Knapsack createMO1(final Set<Item> items) {
+	public static Knapsack createMO1(final Items items) {
 		return create(items, MultiObjectiveProblem.MAX_CAPACITY_1);
 	}
 
@@ -80,7 +80,7 @@ public class KnapsackFactory {
 		final var random = RandomRegistry.random();
 		final var items = MultiObjectiveProblem.ITEMS.stream()
 				.filter(item -> random.nextBoolean())
-				.collect(Items.collector());
+				.collect(Collectors.toCollection(Items::new));
 		final var knapsack = create(items, maxCapacity);
 		return knapsack.isWithinMaxCapacity() ? knapsack : createRandomMO(maxCapacity);
 	}
@@ -94,14 +94,14 @@ public class KnapsackFactory {
 	public static List<Knapsack> createRandomMO() {
 		final List<Item> remainingItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
 		Collections.shuffle(remainingItems, RandomRegistry.random());
-		final Set<Item> items0 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_0);
+		final Items items0 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_0);
 		remainingItems.removeAll(items0);
-		final Set<Item> items1 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_1);
+		final Items items1 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_1);
 		return List.of(createMO0(items0), createMO1(items1));
 	}
 
-	private static Set<Item> takeWhileWithinMaxCapacity(final List<Item> remainingItems, final int maxCapacity) {
-		final var items = Items.set();
+	private static Items takeWhileWithinMaxCapacity(final List<Item> remainingItems, final int maxCapacity) {
+		final var items = new Items();
 		var totalWeight = 0;
 		for (final Item item : remainingItems) {
 			final var itemWeight = item.weight();

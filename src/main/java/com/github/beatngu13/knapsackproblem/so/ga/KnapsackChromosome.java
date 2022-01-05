@@ -6,6 +6,8 @@ import com.github.beatngu13.knapsackproblem.util.Items;
 import io.jenetics.Chromosome;
 import io.jenetics.util.ISeq;
 
+import java.util.stream.Collectors;
+
 public record KnapsackChromosome(Knapsack knapsack) implements Chromosome<ItemGene> {
 
 	@Override
@@ -22,7 +24,7 @@ public record KnapsackChromosome(Knapsack knapsack) implements Chromosome<ItemGe
 	public Chromosome<ItemGene> newInstance(final ISeq<ItemGene> genes) {
 		final var items = genes.stream()
 				.map(ItemGene::allele)
-				.collect(Items.collector());
+				.collect(Collectors.toCollection(Items::new));
 		return new KnapsackChromosome(KnapsackFactory.createSO(items));
 	}
 

@@ -10,7 +10,6 @@ import io.jenetics.util.Seq;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,7 +18,7 @@ class UnusedItemsMutatorTest {
 
 	@Test
 	void should_not_mutate_when_probability_is_zero() {
-		final var knapsack = KnapsackFactory.createSO(Collections.emptySet());
+		final var knapsack = KnapsackFactory.createSO(new Items());
 		final var cut = new UnusedItemsMutator(0.0);
 
 		final var result = cut.alter(toPhenotypeSeq(knapsack), 1L);
@@ -42,7 +41,7 @@ class UnusedItemsMutatorTest {
 
 	@Test
 	void should_mutate_knapsack_with_available_weight() {
-		final var knapsack = KnapsackFactory.createSO(Collections.emptySet());
+		final var knapsack = KnapsackFactory.createSO(new Items());
 		final var cut = new UnusedItemsMutator(1.0);
 
 		final var result = cut.alter(toPhenotypeSeq(knapsack), 1L);
@@ -50,7 +49,7 @@ class UnusedItemsMutatorTest {
 		final var knapsacks = toKnapsackList(result.population());
 		// Previously unused items, sorted by profit.
 		final var expected = KnapsackFactory.createSO(
-				Items.set(SingleObjectiveProblem.ITEMS.subList(9, SingleObjectiveProblem.ITEMS.size())));
+				new Items(SingleObjectiveProblem.ITEMS.subList(9, SingleObjectiveProblem.ITEMS.size())));
 		assertThat(knapsacks).size().isOne();
 		assertThat(knapsacks).first().isEqualTo(expected);
 	}

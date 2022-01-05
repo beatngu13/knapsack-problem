@@ -38,7 +38,7 @@ public final class ProblemUtil {
 		return IntStream.range(0, optimalSolution.length())
 				.mapToObj(index -> getOptimalItemAt(index, optimalSolution, items))
 				.flatMap(Optional::stream)
-				.collect(Collectors.collectingAndThen(Items.collector(),
+				.collect(Collectors.collectingAndThen(Collectors.toCollection(Items::new),
 						optimalItems -> KnapsackFactory.create(optimalItems, maxCapacity)));
 	}
 

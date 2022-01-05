@@ -15,7 +15,6 @@ import io.jenetics.util.RandomRegistry;
 import io.jenetics.util.Seq;
 
 import java.util.Comparator;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import static java.util.function.Predicate.not;
@@ -71,9 +70,9 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 		return Phenotype.of(newGenotype, generation);
 	}
 
-	private Set<Item> addUnusedItems(final Set<Item> itemsFromKnapsack0, final Set<Item> itemsFromKnapsack1,
-									 final Knapsack knapsack) {
-		final var newItems = Items.set(knapsack.items());
+	private Items addUnusedItems(final Items itemsFromKnapsack0, final Items itemsFromKnapsack1,
+								 final Knapsack knapsack) {
+		final var newItems = new Items(knapsack.items());
 
 		MultiObjectiveProblem.ITEMS.stream()
 				.filter(not(itemsFromKnapsack0::contains)) // Filter items from first knapsack.

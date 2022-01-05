@@ -58,7 +58,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 				.as(KnapsackChromosome.class)
 				.knapsack()
 				.items();
-		final var newItems = Items.set(items);
+		final var newItems = new Items(items);
 
 		SingleObjectiveProblem.ITEMS.stream()
 				.filter(not(items::contains)) // Filter for unused items.

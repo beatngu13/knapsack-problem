@@ -1,6 +1,6 @@
 package com.github.beatngu13.knapsackproblem.base;
 
-import java.util.Set;
+import com.github.beatngu13.knapsackproblem.util.Items;
 
 /**
  * A knapsack, consisting of a set of {@link Item}s and a maximum capacity.
@@ -8,7 +8,7 @@ import java.util.Set;
  * @param items       The set of items in this knapsack.
  * @param maxCapacity The maximum capacity of the knapsack.
  */
-public record Knapsack(Set<Item> items, int maxCapacity) {
+public record Knapsack(Items items, int maxCapacity) {
 
 	/**
 	 * @return The summarized profit of all items in this knapsack.
