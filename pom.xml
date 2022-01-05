@@ -13,7 +13,6 @@
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
 		<jenetics.version>6.3.0</jenetics.version>
-		<maven.surefire.version>2.22.2</maven.surefire.version>
 	</properties>
 
 	<dependencies>
