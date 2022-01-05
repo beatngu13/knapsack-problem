@@ -11,8 +11,7 @@ public class ProfitFitness implements Function<ISeq<Knapsack>, Vec<int[]>> {
 	@Override
 	public Vec<int[]> apply(final ISeq<Knapsack> knapsacks) {
 		final var profits = knapsacks.stream()
-				.map(Knapsack::profit)
-				.mapToInt(Integer::intValue)
+				.mapToInt(Knapsack::profit)
 				.toArray();
 		return Vec.of(profits);
 	}
