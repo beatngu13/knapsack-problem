@@ -2,11 +2,13 @@ package com.github.beatngu13.knapsackproblem.base;
 
 import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
 import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
+import io.jenetics.util.RandomAdapter;
 import io.jenetics.util.RandomRegistry;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class KnapsackFactory {
@@ -92,7 +94,8 @@ public class KnapsackFactory {
 	 */
 	public static List<Knapsack> createRandomMO() {
 		final List<Item> remainingItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
-		Collections.shuffle(remainingItems, RandomRegistry.random());
+		final Random random = RandomAdapter.of(RandomRegistry.random());
+		Collections.shuffle(remainingItems, random);
 		final Items items0 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_0);
 		remainingItems.removeAll(items0);
 		final Items items1 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_1);

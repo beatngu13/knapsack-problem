@@ -42,7 +42,9 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 				.map(individual -> random.nextInt(100) <= probability * 100
 						? addUnusedItems(individual, generation)
 						: individual)
-				.collect(Collectors.collectingAndThen(ISeq.toISeq(), AltererResult::of));
+				.collect(Collectors.collectingAndThen(
+						ISeq.toISeq(),
+						alteredPopulation -> new AltererResult<>(alteredPopulation, 0)));
 	}
 
 	/**
