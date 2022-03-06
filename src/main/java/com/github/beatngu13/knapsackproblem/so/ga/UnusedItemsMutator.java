@@ -2,7 +2,7 @@ package com.github.beatngu13.knapsackproblem.so.ga;
 
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Items;
-import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
+import com.github.beatngu13.knapsackproblem.so.SingleObjectiveKnapsackFactory;
 import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
 import io.jenetics.Alterer;
 import io.jenetics.AltererResult;
@@ -66,7 +66,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 				.filter(not(items::contains)) // Filter for unused items.
 				.sorted(Comparator.comparing(Item::profit).reversed()) // Sort by highest profit.
 				.forEach(unusedItem -> {
-					final var newKnapsack = KnapsackFactory.createSO(newItems);
+					final var newKnapsack = SingleObjectiveKnapsackFactory.create(newItems);
 					final var availableWeight = SingleObjectiveProblem.MAX_CAPACITY - newKnapsack.weight();
 					final var unusedItemWeight = unusedItem.weight();
 					if (availableWeight - unusedItemWeight >= 0) {
@@ -74,7 +74,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 					}
 				});
 
-		return Phenotype.of(Genotype.of(new KnapsackChromosome(KnapsackFactory.createSO(newItems))), generation);
+		return Phenotype.of(Genotype.of(new KnapsackChromosome(SingleObjectiveKnapsackFactory.create(newItems))), generation);
 	}
 
 }

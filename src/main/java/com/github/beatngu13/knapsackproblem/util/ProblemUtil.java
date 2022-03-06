@@ -3,7 +3,6 @@ package com.github.beatngu13.knapsackproblem.util;
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Items;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
-import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,7 +39,7 @@ public final class ProblemUtil {
 				.mapToObj(index -> getOptimalItemAt(index, optimalSolution, items))
 				.flatMap(Optional::stream)
 				.collect(Collectors.collectingAndThen(Collectors.toCollection(Items::new),
-						optimalItems -> KnapsackFactory.create(optimalItems, maxCapacity)));
+						optimalItems -> new Knapsack(optimalItems, maxCapacity)));
 	}
 
 	private static Optional<Item> getOptimalItemAt(final int index, final String optimalSolution, final List<Item> items) {

@@ -2,7 +2,7 @@ package com.github.beatngu13.knapsackproblem.so.ga;
 
 import com.github.beatngu13.knapsackproblem.base.Items;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
-import com.github.beatngu13.knapsackproblem.base.KnapsackFactory;
+import com.github.beatngu13.knapsackproblem.so.SingleObjectiveKnapsackFactory;
 import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
 import io.jenetics.Genotype;
 import io.jenetics.Phenotype;
@@ -18,7 +18,7 @@ class UnusedItemsMutatorTest {
 
 	@Test
 	void should_not_mutate_when_probability_is_zero() {
-		final var knapsack = KnapsackFactory.createSO(new Items());
+		final var knapsack = SingleObjectiveKnapsackFactory.create(new Items());
 		final var cut = new UnusedItemsMutator(0.0);
 
 		final var result = cut.alter(toPhenotypeSeq(knapsack), 1L);
@@ -41,14 +41,14 @@ class UnusedItemsMutatorTest {
 
 	@Test
 	void should_mutate_knapsack_with_available_weight() {
-		final var knapsack = KnapsackFactory.createSO(new Items());
+		final var knapsack = SingleObjectiveKnapsackFactory.create(new Items());
 		final var cut = new UnusedItemsMutator(1.0);
 
 		final var result = cut.alter(toPhenotypeSeq(knapsack), 1L);
 
 		final var knapsacks = toKnapsackList(result.population());
 		// Previously unused items, sorted by profit.
-		final var expected = KnapsackFactory.createSO(
+		final var expected = SingleObjectiveKnapsackFactory.create(
 				new Items(SingleObjectiveProblem.ITEMS.subList(9, SingleObjectiveProblem.ITEMS.size())));
 		assertThat(knapsacks).size().isOne();
 		assertThat(knapsacks).first().isEqualTo(expected);
