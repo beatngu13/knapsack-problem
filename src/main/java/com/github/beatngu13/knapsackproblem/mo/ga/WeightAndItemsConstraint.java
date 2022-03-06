@@ -37,6 +37,7 @@ public class WeightAndItemsConstraint implements Constraint<ItemGene, Vec<int[]>
 	@Override
 	public Phenotype<ItemGene, Vec<int[]>> repair(final Phenotype<ItemGene, Vec<int[]>> individual,
 												  final long generation) {
+		// No repair like Constraint#of(Predicate).
 		final var knapsacks = MultiObjectiveKnapsackFactory.createRandom();
 		final var chromosome0 = new KnapsackChromosome(knapsacks.get(0));
 		final var chromosome1 = new KnapsackChromosome(knapsacks.get(1));
