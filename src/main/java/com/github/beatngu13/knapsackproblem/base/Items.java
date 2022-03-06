@@ -3,6 +3,7 @@ package com.github.beatngu13.knapsackproblem.base;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.List;
 
 /**
  * A set of knapsack items with predictable iteration order.
@@ -20,6 +21,10 @@ public class Items extends LinkedHashSet<Item> {
 
 	public Items(final Collection<Item> items) {
 		super(items);
+	}
+
+	public Items(final Item... items) {
+		super(List.of(items));
 	}
 
 }
