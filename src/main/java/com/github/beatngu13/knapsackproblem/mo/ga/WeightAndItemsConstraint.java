@@ -42,7 +42,7 @@ public class WeightAndItemsConstraint implements Constraint<ItemGene, Vec<int[]>
 		final var chromosome0 = new KnapsackChromosome(knapsacks.get(0));
 		final var chromosome1 = new KnapsackChromosome(knapsacks.get(1));
 		final var genotype = Genotype.of(chromosome0, chromosome1);
-		return Phenotype.of(genotype, 0);
+		return Phenotype.of(genotype, 0L);
 	}
 
 }
