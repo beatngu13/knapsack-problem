@@ -11,6 +11,12 @@ public class Item {
 	private final int weight;
 
 	public Item(final int profit, final int weight) {
+		if (profit < 0) {
+			throw new IllegalArgumentException("Profit must not be negative.");
+		}
+		if (weight < 0) {
+			throw new IllegalArgumentException("Weight must not be negative.");
+		}
 		this.profit = profit;
 		this.weight = weight;
 	}

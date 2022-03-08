@@ -1,5 +1,7 @@
 package com.github.beatngu13.knapsackproblem.base;
 
+import java.util.Objects;
+
 /**
  * A knapsack, consisting of a set of {@link Item}s and a maximum capacity.
  *
@@ -7,6 +9,13 @@ package com.github.beatngu13.knapsackproblem.base;
  * @param maxCapacity The maximum capacity of the knapsack.
  */
 public record Knapsack(Items items, int maxCapacity) {
+
+	public Knapsack {
+		Objects.requireNonNull(items, "Items must not be null.");
+		if (maxCapacity < 0) {
+			throw new IllegalArgumentException("Max capacity must not be negative.");
+		}
+	}
 
 	/**
 	 * @return The summarized profit of all items in this knapsack.
