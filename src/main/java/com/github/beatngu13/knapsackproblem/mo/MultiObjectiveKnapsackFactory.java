@@ -60,7 +60,6 @@ public final class MultiObjectiveKnapsackFactory {
 		final Random random = RandomAdapter.of(RandomRegistry.random());
 		Collections.shuffle(remainingItems, random);
 		final Items items0 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_0);
-		remainingItems.removeAll(items0);
 		final Items items1 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_1);
 		return List.of(createFirst(items0), createSecond(items1));
 	}
@@ -75,6 +74,7 @@ public final class MultiObjectiveKnapsackFactory {
 				totalWeight += itemWeight;
 			}
 		}
+		remainingItems.removeAll(items);
 		return items;
 	}
 
