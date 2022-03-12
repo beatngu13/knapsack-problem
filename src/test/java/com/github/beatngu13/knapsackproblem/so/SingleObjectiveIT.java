@@ -36,7 +36,7 @@ public class SingleObjectiveIT {
 						.collect(EvolutionResult.toBestGenotype()));
 
 		final var bestKnapsack = ((KnapsackChromosome) bestPhenotype.chromosome()).knapsack();
-		assertThat(bestKnapsack).isEqualTo(SingleObjectiveProblem.OPTIMAL_KNAPSACK);
+		assertThat(bestKnapsack).isEqualTo(Problem.OPTIMAL_KNAPSACK);
 		System.out.println(stats);
 	}
 

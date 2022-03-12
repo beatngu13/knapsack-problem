@@ -12,37 +12,37 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public final class MultiObjectiveKnapsackFactory {
+public final class KnapsackFactory {
 
-	private MultiObjectiveKnapsackFactory() {
+	private KnapsackFactory() {
 
 	}
 
 	/**
 	 * @param items The set of items.
 	 * @return A new knapsack with the given set of items and a maximum capacity of
-	 * {@link MultiObjectiveProblem#MAX_CAPACITY_0}.
+	 * {@link Problem#MAX_CAPACITY_0}.
 	 */
 	public static Knapsack createFirst(final Items items) {
-		return new Knapsack(items, MultiObjectiveProblem.MAX_CAPACITY_0);
+		return new Knapsack(items, Problem.MAX_CAPACITY_0);
 	}
 
 	/**
 	 * @param items The set of items.
 	 * @return A new knapsack with the given set of items and a maximum capacity of
-	 * {@link MultiObjectiveProblem#MAX_CAPACITY_1}.
+	 * {@link Problem#MAX_CAPACITY_1}.
 	 */
 	public static Knapsack createSecond(final Items items) {
-		return new Knapsack(items, MultiObjectiveProblem.MAX_CAPACITY_1);
+		return new Knapsack(items, Problem.MAX_CAPACITY_1);
 	}
 
 	/**
 	 * @return A new knapsack with random items from
-	 * {@link MultiObjectiveProblem#ITEMS} and the given maximum capacity.
+	 * {@link Problem#ITEMS} and the given maximum capacity.
 	 */
 	public static Knapsack createRandom(final int maxCapacity) {
 		final var random = RandomRegistry.random();
-		final var items = MultiObjectiveProblem.ITEMS.stream()
+		final var items = Problem.ITEMS.stream()
 				.filter(item -> random.nextBoolean())
 				.collect(Collectors.toCollection(Items::new));
 		final var knapsack = new Knapsack(items, maxCapacity);
@@ -51,16 +51,16 @@ public final class MultiObjectiveKnapsackFactory {
 
 	/**
 	 * @return A list of new knapsacks with random, mutually exclusive items from
-	 * {@link MultiObjectiveProblem#ITEMS} and a maximum capacity of
-	 * {@link MultiObjectiveProblem#MAX_CAPACITY_0} for the first and
-	 * {@link MultiObjectiveProblem#MAX_CAPACITY_1} for the second knapsack.
+	 * {@link Problem#ITEMS} and a maximum capacity of
+	 * {@link Problem#MAX_CAPACITY_0} for the first and
+	 * {@link Problem#MAX_CAPACITY_1} for the second knapsack.
 	 */
 	public static List<Knapsack> createRandom() {
-		final List<Item> remainingItems = new ArrayList<>(MultiObjectiveProblem.ITEMS);
+		final List<Item> remainingItems = new ArrayList<>(Problem.ITEMS);
 		final Random random = RandomAdapter.of(RandomRegistry.random());
 		Collections.shuffle(remainingItems, random);
-		final Items items0 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_0);
-		final Items items1 = takeWhileWithinMaxCapacity(remainingItems, MultiObjectiveProblem.MAX_CAPACITY_1);
+		final Items items0 = takeWhileWithinMaxCapacity(remainingItems, Problem.MAX_CAPACITY_0);
+		final Items items1 = takeWhileWithinMaxCapacity(remainingItems, Problem.MAX_CAPACITY_1);
 		return List.of(createFirst(items0), createSecond(items1));
 	}
 

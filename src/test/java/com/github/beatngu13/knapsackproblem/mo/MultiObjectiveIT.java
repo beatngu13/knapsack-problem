@@ -50,8 +50,8 @@ class MultiObjectiveIT {
 		final var optimalSolution = Collections.max(paretoSet.asList(),
 				Comparator.comparing(MultiObjectiveIT::getProfit));
 		assertThat(getKnapsacks(optimalSolution)).containsExactlyInAnyOrder(
-				MultiObjectiveProblem.OPTIMAL_KNAPSACK_0,
-				MultiObjectiveProblem.OPTIMAL_KNAPSACK_1);
+				Problem.OPTIMAL_KNAPSACK_0,
+				Problem.OPTIMAL_KNAPSACK_1);
 		System.out.println(stats);
 	}
 

@@ -3,8 +3,8 @@ package com.github.beatngu13.knapsackproblem.mo.ga;
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Items;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
-import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveKnapsackFactory;
-import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveProblem;
+import com.github.beatngu13.knapsackproblem.mo.KnapsackFactory;
+import com.github.beatngu13.knapsackproblem.mo.Problem;
 import io.jenetics.Alterer;
 import io.jenetics.AltererResult;
 import io.jenetics.Genotype;
@@ -62,8 +62,8 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 		final var newItems0 = addUnusedItems(knapsack0.items(), knapsack1.items(), knapsack0);
 		final var newItems1 = addUnusedItems(newItems0, knapsack1.items(), knapsack1);
 
-		final var newKnapsack0 = MultiObjectiveKnapsackFactory.createFirst(newItems0);
-		final var newKnapsack1 = MultiObjectiveKnapsackFactory.createSecond(newItems1);
+		final var newKnapsack0 = KnapsackFactory.createFirst(newItems0);
+		final var newKnapsack1 = KnapsackFactory.createSecond(newItems1);
 
 		final var newGenotype = Genotype.of(
 				new KnapsackChromosome(newKnapsack0),
@@ -76,7 +76,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 								 final Knapsack knapsack) {
 		final var newItems = new Items(knapsack.items());
 
-		MultiObjectiveProblem.ITEMS.stream()
+		Problem.ITEMS.stream()
 				.filter(not(itemsFromKnapsack0::contains)) // Filter items from first knapsack.
 				.filter(not(itemsFromKnapsack1::contains)) // Filter items from second knapsack.
 				.sorted(Comparator.comparing(Item::profit).reversed()) // Sort by highest profit.

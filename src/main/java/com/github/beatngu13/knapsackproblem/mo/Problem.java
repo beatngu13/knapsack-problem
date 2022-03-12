@@ -10,9 +10,9 @@ import java.util.List;
  * Multi-objective knapsack problem based on P06 from <a href=
  * "https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html">https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/knapsack_multiple.html</a>.
  */
-public final class MultiObjectiveProblem {
+public final class Problem {
 
-	private MultiObjectiveProblem() {
+	private Problem() {
 
 	}
 

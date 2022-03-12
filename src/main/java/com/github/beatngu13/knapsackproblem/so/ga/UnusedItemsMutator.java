@@ -2,8 +2,8 @@ package com.github.beatngu13.knapsackproblem.so.ga;
 
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Items;
-import com.github.beatngu13.knapsackproblem.so.SingleObjectiveKnapsackFactory;
-import com.github.beatngu13.knapsackproblem.so.SingleObjectiveProblem;
+import com.github.beatngu13.knapsackproblem.so.KnapsackFactory;
+import com.github.beatngu13.knapsackproblem.so.Problem;
 import io.jenetics.Alterer;
 import io.jenetics.AltererResult;
 import io.jenetics.Genotype;
@@ -62,19 +62,19 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Integer> {
 				.items();
 		final var newItems = new Items(items);
 
-		SingleObjectiveProblem.ITEMS.stream()
+		Problem.ITEMS.stream()
 				.filter(not(items::contains)) // Filter for unused items.
 				.sorted(Comparator.comparing(Item::profit).reversed()) // Sort by highest profit.
 				.forEach(unusedItem -> {
-					final var newKnapsack = SingleObjectiveKnapsackFactory.create(newItems);
-					final var availableWeight = SingleObjectiveProblem.MAX_CAPACITY - newKnapsack.weight();
+					final var newKnapsack = KnapsackFactory.create(newItems);
+					final var availableWeight = Problem.MAX_CAPACITY - newKnapsack.weight();
 					final var unusedItemWeight = unusedItem.weight();
 					if (availableWeight - unusedItemWeight >= 0) {
 						newItems.add(unusedItem);
 					}
 				});
 
-		return Phenotype.of(Genotype.of(new KnapsackChromosome(SingleObjectiveKnapsackFactory.create(newItems))), generation);
+		return Phenotype.of(Genotype.of(new KnapsackChromosome(KnapsackFactory.create(newItems))), generation);
 	}
 
 }

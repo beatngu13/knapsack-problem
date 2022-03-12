@@ -2,7 +2,7 @@ package com.github.beatngu13.knapsackproblem.mo.ga;
 
 import com.github.beatngu13.knapsackproblem.base.Items;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
-import com.github.beatngu13.knapsackproblem.mo.MultiObjectiveKnapsackFactory;
+import com.github.beatngu13.knapsackproblem.mo.KnapsackFactory;
 import io.jenetics.Chromosome;
 import io.jenetics.util.ISeq;
 
@@ -17,7 +17,7 @@ public record KnapsackChromosome(Knapsack knapsack) implements Chromosome<ItemGe
 
 	@Override
 	public Chromosome<ItemGene> newInstance() {
-		return new KnapsackChromosome(MultiObjectiveKnapsackFactory.createRandom(knapsack.maxCapacity()));
+		return new KnapsackChromosome(KnapsackFactory.createRandom(knapsack.maxCapacity()));
 	}
 
 	@Override

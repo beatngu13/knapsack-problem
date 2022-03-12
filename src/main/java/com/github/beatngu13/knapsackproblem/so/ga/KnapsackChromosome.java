@@ -2,7 +2,7 @@ package com.github.beatngu13.knapsackproblem.so.ga;
 
 import com.github.beatngu13.knapsackproblem.base.Items;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
-import com.github.beatngu13.knapsackproblem.so.SingleObjectiveKnapsackFactory;
+import com.github.beatngu13.knapsackproblem.so.KnapsackFactory;
 import io.jenetics.Chromosome;
 import io.jenetics.util.ISeq;
 
@@ -17,7 +17,7 @@ public record KnapsackChromosome(Knapsack knapsack) implements Chromosome<ItemGe
 
 	@Override
 	public Chromosome<ItemGene> newInstance() {
-		return new KnapsackChromosome(SingleObjectiveKnapsackFactory.createRandom());
+		return new KnapsackChromosome(KnapsackFactory.createRandom());
 	}
 
 	@Override
@@ -25,7 +25,7 @@ public record KnapsackChromosome(Knapsack knapsack) implements Chromosome<ItemGe
 		final var items = genes.stream()
 				.map(ItemGene::allele)
 				.collect(Collectors.toCollection(Items::new));
-		return new KnapsackChromosome(SingleObjectiveKnapsackFactory.create(items));
+		return new KnapsackChromosome(KnapsackFactory.create(items));
 	}
 
 	@Override
