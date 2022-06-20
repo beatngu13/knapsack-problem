@@ -12,7 +12,7 @@
 		<encoding>UTF-8</encoding>
 		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
 		<project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
-		<jenetics.version>7.0.0</jenetics.version>
+		<jenetics.version>7.1.0</jenetics.version>
 	</properties>
 
 	<dependencies>
