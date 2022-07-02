@@ -44,9 +44,7 @@ public class UnusedItemsMutator implements Alterer<ItemGene, Vec<int[]>> {
 				.map(individual -> random.nextInt(100) <= probability * 100
 						? addUnusedItems(individual, generation)
 						: individual)
-				.collect(Collectors.collectingAndThen(
-						ISeq.toISeq(),
-						alteredPopulation -> new AltererResult<>(alteredPopulation, 0)));
+				.collect(Collectors.collectingAndThen(ISeq.toISeq(), AltererResult::new));
 	}
 
 	private Phenotype<ItemGene, Vec<int[]>> addUnusedItems(final Phenotype<ItemGene, Vec<int[]>> individual,
