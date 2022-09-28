@@ -3,7 +3,6 @@ package com.github.beatngu13.knapsackproblem.mo;
 import com.github.beatngu13.knapsackproblem.base.Item;
 import com.github.beatngu13.knapsackproblem.base.Items;
 import com.github.beatngu13.knapsackproblem.base.Knapsack;
-import io.jenetics.util.RandomAdapter;
 import io.jenetics.util.RandomRegistry;
 
 import java.util.ArrayList;
@@ -57,7 +56,7 @@ public final class KnapsackFactory {
 	 */
 	public static List<Knapsack> createRandom() {
 		final List<Item> remainingItems = new ArrayList<>(Problem.ITEMS);
-		final Random random = RandomAdapter.of(RandomRegistry.random());
+		final Random random = Random.from(RandomRegistry.random());
 		Collections.shuffle(remainingItems, random);
 		final Items items0 = takeWhileWithinMaxCapacity(remainingItems, Problem.MAX_CAPACITY_0);
 		final Items items1 = takeWhileWithinMaxCapacity(remainingItems, Problem.MAX_CAPACITY_1);
