@@ -17,7 +17,7 @@ import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SingleObjectiveIT {
+class SingleObjectiveIT {
 
 	@Test
 	void should_find_optimal_solution() {
