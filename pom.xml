@@ -9,9 +9,8 @@
 
 	<properties>
 		<java.version>20</java.version>
-		<encoding>UTF-8</encoding>
-		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
-		<project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
 		<jenetics.version>7.1.2</jenetics.version>
 	</properties>
 
