@@ -42,7 +42,7 @@ public final class KnapsackFactory {
 	public static Knapsack createRandom(final int maxCapacity) {
 		final var random = RandomRegistry.random();
 		final var items = Problem.ITEMS.stream()
-				.filter(item -> random.nextBoolean())
+				.filter(_ -> random.nextBoolean())
 				.collect(Collectors.toCollection(Items::new));
 		final var knapsack = new Knapsack(items, maxCapacity);
 		return knapsack.isWithinMaxCapacity() ? knapsack : createRandom(maxCapacity);

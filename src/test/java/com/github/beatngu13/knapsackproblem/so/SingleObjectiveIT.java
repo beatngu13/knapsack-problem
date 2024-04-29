@@ -30,7 +30,7 @@ class SingleObjectiveIT {
 		final EvolutionStatistics<Integer, ?> stats = EvolutionStatistics.ofNumber();
 
 		final var bestPhenotype = RandomRegistry.with(new Random(1L), // Fixed seed for reproducibility.
-				rand -> knapsackEngine.stream()
+				_ -> knapsackEngine.stream()
 						.limit(200L)
 						.peek(stats)
 						.collect(EvolutionResult.toBestGenotype()));

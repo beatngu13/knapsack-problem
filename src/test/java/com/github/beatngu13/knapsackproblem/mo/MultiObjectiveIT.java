@@ -42,7 +42,7 @@ class MultiObjectiveIT {
 		final EvolutionStatistics<Vec<int[]>, ?> stats = EvolutionStatistics.ofComparable();
 
 		final var paretoSet = RandomRegistry.with(new Random(1L), // Fixed seed for reproducibility.
-				rand -> knapsackEngine.stream()
+				_ -> knapsackEngine.stream()
 						.limit(Limits.byFixedGeneration(300L))
 						.peek(stats)
 						.collect(MOEA.toParetoSet(IntRange.of(20, 50))));
