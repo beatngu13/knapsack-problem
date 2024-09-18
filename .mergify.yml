@@ -6,7 +6,7 @@ queue_rules:
 pull_request_rules:
   - name: merge_dependabot
     conditions:
-      - "author=dependabot[bot]"
+      - "author=renovate[bot]"
       - "check-success=build"
     actions:
       queue:
