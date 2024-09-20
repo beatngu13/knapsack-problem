@@ -1,7 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
-    "schedule:earlyMondays"
+    "github>beatngu13/renovate-config"
   ]
 }
