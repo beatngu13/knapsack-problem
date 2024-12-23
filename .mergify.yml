@@ -1,20 +1,19 @@
 queue_rules:
   - name: default
-    conditions:
-      - "check-success=build"
-
-pull_request_rules:
-  - name: merge_dependabot
-    conditions:
+    queue_conditions:
       - "author=renovate[bot]"
       - "check-success=build"
-    actions:
-      queue:
-        name: default
-        update_method: rebase
+    merge_conditions:
+      - "check-success=build"
+    update_method: rebase
 
+pull_request_rules:
   - name: delete_merged
     conditions:
       - merged
     actions:
-      delete_head_branch: { }
+      delete_head_branch: {}
+  - name: merge_dependabot
+    conditions: []
+    actions:
+      queue:
