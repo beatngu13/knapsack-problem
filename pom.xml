@@ -11,7 +11,7 @@
 		<java.version>25</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
-		<jenetics.version>8.3.0</jenetics.version>
+		<jenetics.version>9.0.0</jenetics.version>
 	</properties>
 
 	<dependencies>
