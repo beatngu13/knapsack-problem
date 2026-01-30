@@ -41,11 +41,11 @@ class MultiObjectiveIT {
 
 		final EvolutionStatistics<Vec<int[]>, ?> stats = EvolutionStatistics.ofComparable();
 
-		final var paretoSet = RandomRegistry.with(new Random(1L), // Fixed seed for reproducibility.
-				_ -> knapsackEngine.stream()
+		final var paretoSet = RandomRegistry.with(new Random(1L))
+				.call(() -> knapsackEngine.stream()
 						.limit(Limits.byFixedGeneration(300L))
 						.peek(stats)
-						.collect(MOEA.toParetoSet(IntRange.of(20, 50))));
+						.collect(MOEA.toParetoSet(new IntRange(20, 50))));
 
 		final var optimalSolution = Collections.max(paretoSet.asList(),
 				Comparator.comparing(MultiObjectiveIT::getProfit));
